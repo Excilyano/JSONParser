@@ -4,6 +4,7 @@ import time
 def main():
     parser = JsonParser()
     parser.extract_from_json()
+    parser.generate_graphs()
 
     # for (key, item) in parser.object_data.items():
     #     print(item)

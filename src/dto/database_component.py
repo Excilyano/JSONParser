@@ -17,10 +17,9 @@ class DBComponent(Component):
         result = "DB_COMPONENT\n"
 
         result += super(DBComponent, self).__str__()
-
+        result += self.sql_stats.__str__()
         result += "Host : " + self.host + "\n"
         result += "Statement : " + self.statement + "\n"
-        result += self.sql_stats.__str__()
         result += "{"
         for param in self.params:
             result += param + ", "

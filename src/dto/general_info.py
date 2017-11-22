@@ -7,6 +7,8 @@ class GeneralInfo(object):
         self.file_name = file_name
         self.stats = dict()
         self.children = []
+        self.total_joins = 0
+        self.total_transactions = 0
 
     def add_stat(self, stat):
         self.stats[stat.name] = stat
@@ -18,6 +20,9 @@ class GeneralInfo(object):
         result = ""
         result += '---------------------------\n'
         result += self.file_name + '\n'
+        result += '---------------------------\n'
+        result += "Total joins : " + str(self.total_joins) + "\n"
+        result += "Total transactions : " + str(self.total_transactions) + "\n"
         result += '---------------------------\n'
         for (key, item) in self.stats.items():
             result += str(item) + '\n'

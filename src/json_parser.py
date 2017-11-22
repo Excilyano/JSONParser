@@ -11,6 +11,8 @@ from dto.general_info import GeneralInfo
 from dto.http_component import HTTPComponent
 from dto.stats import Stats
 
+from report.report_generator import ReportGenerator
+
 from SQLParser.SqlReport import SqlReport
 from SQLParser.SqlReportProcessor import SqlReportProcessor
 
@@ -39,6 +41,12 @@ class JsonParser(object):
         for (key, json) in self.json_data.items():
             self.extract_generalinfo(path.basename(key), json)
 
+    def generate_graphs(self):
+        for file in self.object_data:
+            generator = ReportGenerator(self.object_data[file])
+            generator.generate_general_graph()
+
+
     def extract_generalinfo(self, file, json):
         general_info = GeneralInfo(file_name=file)
 
@@ -52,10 +60,12 @@ class JsonParser(object):
         for data in json["children"]:
             self.explore_child(data, general_info)
 
+        general_info.total_joins = self.nb_joins
+        general_info.total_transactions = self.nb_transactions
+
         self.object_data[file] = general_info
-        print("Total joins : " + str(self.nb_joins))
-        print("Total transactions : " + str(self.nb_transactions))
         print(general_info.__str__())
+
 
     def explore_child(self, child, parent):
         info = child["info"]

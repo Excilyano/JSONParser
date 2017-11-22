@@ -1,9 +1,22 @@
 
+from os import path
+
 import plotly as py
 import plotly.graph_objs as graph_objs
 
-class GraphesGenerator(object):
-    def __init__(self, generalInfo)
+class ReportGenerator(object):
+
+    dir_path = path.dirname(path.realpath(__file__))
+    report_directory = dir_path + '/../../report/'
+    graph_directory = report_directory + '/graphs/'
+
+
+    def __init__(self, general_info):
+        self.general_info = general_info
+
+
+    def generate_general_graph(self):
+        print("nb joins : " + str(self.general_info.total_joins))
 
 
 # labels = ['label1', 'label2', 'label3']
