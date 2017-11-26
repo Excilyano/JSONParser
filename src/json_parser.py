@@ -44,7 +44,7 @@ class JsonParser(object):
     def generate_graphs(self):
         for file in self.object_data:
             generator = ReportGenerator(self.object_data[file])
-            generator.generate_general_graph()
+            generator.generate_report()
 
 
     def extract_generalinfo(self, file, json):
