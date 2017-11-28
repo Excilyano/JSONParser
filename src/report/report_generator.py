@@ -58,23 +58,82 @@ class ReportGenerator(object):
         <iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
         src="''' + graph_path + '''"></iframe>'''
 
+    def generate_tree(self):
+        html_string = '''
+        <script>
+        let data = [
+            '''
+
+        for item in self.general_info.children:
+            html_string += '''
+            {
+                state: {
+                    expanded:false
+                },
+                text: "''' + item.project + '''",
+            '''
+            if(len(item.children) != 0):
+                html_string += 'nodes: ['
+                for child in item.children:
+                    html_string += self.generate_children_tree(child)
+                html_string += ']'
+                
+            html_string += '},'
+
+        html_string += '''
+        ]
+        $('#tree').treeview({data: data});
+        </script>
+        '''
+
+        return html_string
+
+    def generate_children_tree(self, item):
+        html_string = '''
+        {
+            state: {
+                expanded: false
+            },
+            text: "''' + item.project + '''",
+        '''
+
+        if(len(item.children) != 0):
+            html_string += 'nodes: ['
+            for child in item.children:
+                html_string += self.generate_children_tree(child)
+            html_string += ']'
+            
+        html_string += '},'
+
+        return html_string
+
+
     def generate_report(self):
         global_html = self.generate_global_graph()
 
         globalsql_html = self.generate_global_sql_graph()
 
+        tree_html = self.generate_tree()
+
         html_string = '''
         <html>
             <head>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
                 <style>body{ margin:0 100; background:whitesmoke; }</style>
             </head>
             <body>
                 <h1>SQL Report for Openstack</h1>
-                <h2> File : ''' + self.general_info.file_name + '''
+                <h2> File : ''' + self.general_info.file_name + '''</h2>
 
                 ''' + global_html + '''
                 ''' + globalsql_html + '''
+                <div id="tree"></div>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+            ''' + tree_html + '''
             </body>
         </html>'''
 
