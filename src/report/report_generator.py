@@ -70,7 +70,7 @@ class ReportGenerator(object):
                 state: {
                     expanded:false
                 },
-                text: "''' + item.project + '''",
+                text: "[''' + item.project + '''] - ",
             '''
             if(len(item.children) != 0):
                 html_string += 'nodes: ['
@@ -94,7 +94,7 @@ class ReportGenerator(object):
             state: {
                 expanded: false
             },
-            text: "''' + item.project + '''",
+            text: "[''' + item.project + '''] - ",
         '''
 
         if(len(item.children) != 0):
