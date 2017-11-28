@@ -24,6 +24,7 @@ class JsonParser(object):
     sqlreportprocessor = SqlReportProcessor()
     nb_joins = 0
     nb_transactions = 0
+    nb_select1 = 0
 
     def __init__(self):
         self.util = Utils()
@@ -40,6 +41,9 @@ class JsonParser(object):
     def extract_from_json(self):
         for (key, json) in self.json_data.items():
             self.extract_generalinfo(path.basename(key), json)
+            self.nb_joins = 0
+            self.nb_transactions = 0
+            self.nb_select1 = 0
 
     def generate_graphs(self):
         for file in self.object_data:
@@ -62,6 +66,7 @@ class JsonParser(object):
 
         general_info.total_joins = self.nb_joins
         general_info.total_transactions = self.nb_transactions
+        general_info.total_select1 = self.nb_select1
 
         self.object_data[file] = general_info
         print(general_info.__str__())
@@ -136,6 +141,9 @@ class JsonParser(object):
         params = db["info"]["db"]["params"]
         statement = db["info"]["db"]["statement"]
         sql_stats = self.sqlreportprocessor.report(statement)
+
+        if(statement.upper() == "SELECT 1"):
+            self.nb_select1 += 1
 
         self.nb_joins += sql_stats.nb_join
         self.nb_transactions += sql_stats.nb_transac

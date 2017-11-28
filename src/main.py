@@ -6,8 +6,6 @@ def main():
     parser.extract_from_json()
     parser.generate_graphs()
 
-    # for (key, item) in parser.object_data.items():
-    #     print(item)
 
 if __name__ == "__main__":
     start_time = time.time()

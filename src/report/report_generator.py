@@ -28,20 +28,40 @@ class ReportGenerator(object):
         graph_path = py.offline.plot([trace],
                          filename=self.graph_directory + 'global_' + self.general_info.file_name + '.html', auto_open=False)
         
-        html = '''
+        return '''
         <h2> Global info </h2>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
         src="''' + graph_path + '''"></iframe>'''
 
-        return html
-
-    def generate_sql_global_graph(self):
+    def generate_global_sql_graph(self):
         labels = []
         values = []
+        nb_db_requests = 0
 
+        stats = self.general_info.stats
+        if('db' in stats.keys()):
+            nb_db_requests += stats['db'].count
+        if('neutron.db' in stats.keys()):
+            nb_db_requests += stats['neutron.db'].count
+
+        trace = graph_objs.Bar(
+            x=['Total DB requests', 'Select 1', 'Joins', 'Transactions'],
+            y=[nb_db_requests,self.general_info.total_select1,
+                 self.general_info.total_joins, self.general_info.total_transactions]
+        )
+
+        graph_path = py.offline.plot([trace],
+                    filename=self.graph_directory + 'global_sql_' + self.general_info.file_name + '.html', auto_open=False)
+
+        return '''
+        <h2> Global SQL info </h2>
+        <iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+        src="''' + graph_path + '''"></iframe>'''
 
     def generate_report(self):
         global_html = self.generate_global_graph()
+
+        globalsql_html = self.generate_global_sql_graph()
 
         html_string = '''
         <html>
@@ -54,6 +74,7 @@ class ReportGenerator(object):
                 <h2> File : ''' + self.general_info.file_name + '''
 
                 ''' + global_html + '''
+                ''' + globalsql_html + '''
             </body>
         </html>'''
 
