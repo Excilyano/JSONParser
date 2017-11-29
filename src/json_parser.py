@@ -16,6 +16,8 @@ from report.report_generator import ReportGenerator
 from SQLParser.SqlReport import SqlReport
 from SQLParser.SqlReportProcessor import SqlReportProcessor
 
+import time
+
 
 class JsonParser(object):
     """Class used to parse Json files from openstack"""
@@ -26,6 +28,9 @@ class JsonParser(object):
     nb_joins = 0
     nb_transactions = 0
     nb_select1 = 0
+    sql_parsing_duration = 0
+    json_parsing_duration = 0
+    graph_generation_duration = 0
 
     def __init__(self):
         self.util = Utils()
@@ -40,19 +45,27 @@ class JsonParser(object):
             self.json_data[path.basename(file)] = (self.util.read_jsonfile(file))
 
     def extract_from_json(self):
+        time_start = time.time()
+
         for (key, json) in self.json_data.items():
             self.extract_generalinfo(key, json)
             self.nb_joins = 0
             self.nb_transactions = 0
             self.nb_select1 = 0
 
+        self.json_parsing_duration = time.time() - time_start - self.sql_parsing_duration
+
     def generate_graphs(self):
+        time_start = time.time()
+
         generator = ReportGenerator()
         for file in self.object_data:
             generator.general_info = self.object_data[file]
             generator.generate_report()
 
         generator.generate_report_index()
+
+        self.graph_generation_duration = time.time() - time_start
 
 
 
@@ -159,7 +172,10 @@ class JsonParser(object):
         host = db["info"]["host"]
         params = db["info"]["db"]["params"]
         statement = db["info"]["db"]["statement"]
+
+        time_start = time.time()
         sql_stats = self.sqlreportprocessor.report(statement)
+        self.sql_parsing_duration += time.time() - time_start
 
         if(statement.upper() == "SELECT 1"):
             self.nb_select1 += 1

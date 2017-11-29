@@ -4,13 +4,13 @@ trace-create-and-delete-image.yaml.json
 Total joins : 54
 Total transactions : 0
 ---------------------------
-Name : wsgi
-Count : 10
-Duration : 294101
-
 Name : db
 Count : 127
 Duration : 354
+
+Name : wsgi
+Count : 10
+Duration : 294101
 
 ---------------------------
 HTTP_COMPONENT
@@ -74,7 +74,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -90,7 +90,7 @@ Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_i
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -106,7 +106,7 @@ Statement : SELECT user_option.user_id AS user_option_user_id, user_option.optio
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -122,7 +122,7 @@ Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -138,7 +138,7 @@ Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_u
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -154,7 +154,7 @@ Statement : SELECT password.id AS password_id, password.local_user_id AS passwor
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -398,7 +398,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false
-{actor_id_1, type_1, target_id_1, }
+{type_1, target_id_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -426,7 +426,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{actor_id_1, type_1, target_id_1, }
+{type_1, target_id_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -497,7 +497,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{target_id_1, type_1, actor_id_1, }
+{type_1, target_id_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -732,7 +732,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)
-{id, expires, trust_id, extra, valid, user_id, }
+{expires, extra, id, trust_id, valid, user_id, }
 
 
 HTTP_COMPONENT
@@ -783,7 +783,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -799,7 +799,7 @@ Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_i
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -815,7 +815,7 @@ Statement : SELECT user_option.user_id AS user_option_user_id, user_option.optio
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -831,7 +831,7 @@ Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -847,7 +847,7 @@ Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_u
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -863,7 +863,7 @@ Statement : SELECT password.id AS password_id, password.local_user_id AS passwor
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
-{domain_id_1, name_1, }
+{name_1, domain_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1107,7 +1107,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false
-{target_id_1, type_1, actor_id_1, }
+{type_1, target_id_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1135,7 +1135,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{target_id_1, type_1, actor_id_1, }
+{type_1, target_id_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1206,7 +1206,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{target_id_1, type_1, actor_id_1, }
+{type_1, target_id_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1383,7 +1383,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)
-{id, expires, trust_id, extra, valid, user_id, }
+{expires, extra, id, trust_id, valid, user_id, }
 
 
 HTTP_COMPONENT
@@ -1423,7 +1423,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
-{issued_before_1, audit_id_1, user_id_1, project_id_1, }
+{audit_id_1, user_id_1, project_id_1, issued_before_1, }
 
 DB_COMPONENT
 Name : db
@@ -1451,7 +1451,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
-{issued_before_1, audit_id_1, user_id_1, project_id_1, }
+{audit_id_1, user_id_1, project_id_1, issued_before_1, }
 
 DB_COMPONENT
 Name : db
@@ -1479,7 +1479,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
-{issued_before_1, audit_id_1, user_id_1, project_id_1, }
+{audit_id_1, user_id_1, project_id_1, issued_before_1, }
 
 
 
@@ -1518,7 +1518,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : INSERT INTO images (created_at, updated_at, deleted_at, deleted, id, name, disk_format, container_format, size, virtual_size, status, visibility, checksum, min_disk, min_ram, owner, protected) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(deleted)s, %(id)s, %(name)s, %(disk_format)s, %(container_format)s, %(size)s, %(virtual_size)s, %(status)s, %(visibility)s, %(checksum)s, %(min_disk)s, %(min_ram)s, %(owner)s, %(protected)s)
-{id, updated_at, created_at, container_format, deleted, protected, virtual_size, name, status, size, deleted_at, min_ram, checksum, min_disk, disk_format, owner, visibility, }
+{virtual_size, updated_at, status, protected, name, checksum, min_disk, container_format, id, disk_format, deleted_at, min_ram, created_at, size, deleted, owner, visibility, }
 
 DB_COMPONENT
 Name : db
@@ -1793,7 +1793,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s AND images.status = %(status_1)s
-{id, updated_at, visibility, container_format, id_1, status_1, protected, virtual_size, name, status, size, min_ram, checksum, min_disk, disk_format, owner, }
+{id_1, virtual_size, updated_at, status, protected, name, checksum, min_disk, container_format, id, status_1, min_ram, disk_format, size, owner, visibility, }
 
 DB_COMPONENT
 Name : db
@@ -1920,7 +1920,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s
-{id, updated_at, visibility, container_format, id_1, protected, virtual_size, name, status, size, min_ram, checksum, min_disk, disk_format, owner, }
+{id_1, virtual_size, updated_at, status, protected, name, checksum, min_disk, container_format, id, min_ram, disk_format, size, owner, visibility, }
 
 DB_COMPONENT
 Name : db
