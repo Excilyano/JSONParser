@@ -18,7 +18,10 @@ python main.py > execution_trace.log
 ```
 
 ## Output
-As it is now, the program outputs the result directly in the console. You may export it at your convenience when running the program.
+The programm generates several things in the *output* directory :
+  - logs :  textual information about what has been parsed in each trace under the *files* directory
+  - report : global html report for each trace parsed
+  - report/graphs : individual graphs generated which are combined to generate the full report
 
 ## Created by
 * CASSIN Etienne
