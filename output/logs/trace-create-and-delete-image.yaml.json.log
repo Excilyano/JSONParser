@@ -1,7 +1,7 @@
 ---------------------------
 trace-create-and-delete-image.yaml.json
 ---------------------------
-Total joins : 81
+Total joins : 54
 Total transactions : 0
 ---------------------------
 Name : wsgi
@@ -497,7 +497,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{actor_id_1, type_1, target_id_1, }
+{target_id_1, type_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -732,7 +732,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)
-{user_id, id, expires, extra, valid, trust_id, }
+{id, expires, trust_id, extra, valid, user_id, }
 
 
 HTTP_COMPONENT
@@ -1107,7 +1107,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false
-{actor_id_1, type_1, target_id_1, }
+{target_id_1, type_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1135,7 +1135,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{actor_id_1, type_1, target_id_1, }
+{target_id_1, type_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1206,7 +1206,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
-{actor_id_1, type_1, target_id_1, }
+{target_id_1, type_1, actor_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1383,7 +1383,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)
-{user_id, id, expires, extra, valid, trust_id, }
+{id, expires, trust_id, extra, valid, user_id, }
 
 
 HTTP_COMPONENT
@@ -1423,7 +1423,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
-{audit_id_1, issued_before_1, user_id_1, project_id_1, }
+{issued_before_1, audit_id_1, user_id_1, project_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1451,7 +1451,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
-{audit_id_1, issued_before_1, user_id_1, project_id_1, }
+{issued_before_1, audit_id_1, user_id_1, project_id_1, }
 
 DB_COMPONENT
 Name : db
@@ -1479,7 +1479,7 @@ Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
-{audit_id_1, issued_before_1, user_id_1, project_id_1, }
+{issued_before_1, audit_id_1, user_id_1, project_id_1, }
 
 
 
@@ -1518,7 +1518,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : INSERT INTO images (created_at, updated_at, deleted_at, deleted, id, name, disk_format, container_format, size, virtual_size, status, visibility, checksum, min_disk, min_ram, owner, protected) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(deleted)s, %(id)s, %(name)s, %(disk_format)s, %(container_format)s, %(size)s, %(virtual_size)s, %(status)s, %(visibility)s, %(checksum)s, %(min_disk)s, %(min_ram)s, %(owner)s, %(protected)s)
-{deleted, checksum, name, status, disk_format, updated_at, protected, min_ram, container_format, created_at, deleted_at, size, owner, virtual_size, visibility, id, min_disk, }
+{id, updated_at, created_at, container_format, deleted, protected, virtual_size, name, status, size, deleted_at, min_ram, checksum, min_disk, disk_format, owner, visibility, }
 
 DB_COMPONENT
 Name : db
@@ -1793,7 +1793,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s AND images.status = %(status_1)s
-{id_1, container_format, name, status, disk_format, virtual_size, updated_at, protected, min_ram, size, owner, status_1, checksum, visibility, id, min_disk, }
+{id, updated_at, visibility, container_format, id_1, status_1, protected, virtual_size, name, status, size, min_ram, checksum, min_disk, disk_format, owner, }
 
 DB_COMPONENT
 Name : db
@@ -1920,7 +1920,7 @@ Nb join : 0
 Nb transactions : 0
 Host : parasilo-26-kavlan-5.rennes.grid5000.fr
 Statement : UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s
-{id_1, checksum, name, status, disk_format, virtual_size, protected, container_format, min_ram, size, owner, updated_at, visibility, id, min_disk, }
+{id, updated_at, visibility, container_format, id_1, protected, virtual_size, name, status, size, min_ram, checksum, min_disk, disk_format, owner, }
 
 DB_COMPONENT
 Name : db

@@ -4,16 +4,16 @@ from os import path
 import plotly as py
 import plotly.graph_objs as graph_objs
 
+from utils import Utils
+
 class ReportGenerator(object):
 
     dir_path = path.dirname(path.realpath(__file__))
     report_directory = dir_path + '/../../output/report/'
     graph_directory = report_directory + 'graphs/'
 
-
-    def __init__(self, general_info):
-        self.general_info = general_info
-
+    def __init__(self):
+        self.util = Utils()
 
     def generate_global_graph_byrequest(self):
         labels = []
@@ -126,6 +126,38 @@ class ReportGenerator(object):
 
         return html_string
 
+    def generate_report_index(self):
+        files = self.util.find_files(self.report_directory)
+
+        files.remove(self.report_directory + 'index_report.html')
+
+        html_list = ""
+
+        for file in files:
+            html_list += '<li><a href="' + file + '">' + path.basename(file) + '</a></li>\n'
+
+        html_string = '''
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+                <style>body{ margin:0 100; background:whitesmoke; }</style>            
+            </head>
+            <body>
+                <h1>Index of reports for Openstack </h1></br></br>
+                <ul>
+                    ''' + html_list + '''
+                </ul>
+            </body>
+        </html>
+        '''
+
+        with open(self.report_directory + 'index_report.html','w') as f:
+            f.write(html_string)
+            f.close()
+
 
     def generate_report(self):
         global_byrequest_html = self.generate_global_graph_byrequest()
@@ -140,7 +172,7 @@ class ReportGenerator(object):
         <html> 
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-                
+
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
                 <style>body{ margin:0 100; background:whitesmoke; }</style>
@@ -191,55 +223,6 @@ class ReportGenerator(object):
             </body>
         </html>'''
 
-        f = open(self.report_directory + 'report_' + self.general_info.file_name + '.html','w')
-        f.write(html_string)
-        f.close()
-        
-
-
-
-# labels = ['label1', 'label2', 'label3']
-# values = [200,400,1000]
-
-# trace = graph_objs.Pie(labels=labels, values=values)
-
-# chemin = py.offline.plot([trace], filename='toto1.html', auto_open=False)
-
-
-# labelsb = ['label1', 'label2', 'label3']
-# valuesb = [200,400,1000]
-
-# traceb = graph_objs.Pie(labels=labelsb, values=valuesb)
-
-# cheminb = py.offline.plot([traceb], filename='toto2.html', auto_open=False)
-
-# html_string = '''
-# <html>
-#     <head>
-#         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-#         <style>body{ margin:0 100; background:whitesmoke; }</style>
-#     </head>
-#     <body>
-#         <h1>2014 technology and CPG stock prices</h1>
-
-#         <!-- *** Section 1 *** -->
-#         <h2>Section 1: Apple Inc. (AAPL) stock in 2014</h2>
-#         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-# src="''' + chemin + '''"></iframe>
-#         <p>Apple stock price rose steadily through 2014.</p>
-        
-#         <!-- *** Section 2 *** -->
-#         <h2>Section 2: AAPL compared to other 2014 stocks</h2>
-#         <iframe width="1000" height="1000" frameborder="0" seamless="seamless" scrolling="no" \
-# src="''' + cheminb + '''"></iframe>
-#     </body>
-# </html>'''
-
-
-# # Finally, write the html string to a local file.
-
-# # In[185]:
-
-# f = open('./report.html','w')
-# f.write(html_string)
-# f.close()
+        with open(self.report_directory + 'report_' + self.general_info.file_name + '.html','w') as f:
+            f.write(html_string)
+            f.close()

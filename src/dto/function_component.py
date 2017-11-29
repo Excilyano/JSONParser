@@ -12,7 +12,7 @@ class FunctionComponent(Component):
         self.function_call = function_call
 
     def get_statement(self):
-        self.function_call
+        return self.function_call
 
     def __str__(self):
         result = 'FUNCTION_COMPONENT\n'

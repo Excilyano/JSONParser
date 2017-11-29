@@ -47,9 +47,13 @@ class JsonParser(object):
             self.nb_select1 = 0
 
     def generate_graphs(self):
+        generator = ReportGenerator()
         for file in self.object_data:
-            generator = ReportGenerator(self.object_data[file])
+            generator.general_info = self.object_data[file]
             generator.generate_report()
+
+        generator.generate_report_index()
+
 
 
     def extract_generalinfo(self, file, json):
@@ -160,8 +164,8 @@ class JsonParser(object):
         if(statement.upper() == "SELECT 1"):
             self.nb_select1 += 1
 
-        self.nb_joins += sql_stats.nb_join
-        self.nb_transactions += sql_stats.nb_transac
+        self.nb_joins += 1 if sql_stats.nb_join > 0 else 0
+        self.nb_transactions += 1 if sql_stats.nb_transac > 0 else 0
 
         db_component = DBComponent(
             module=general.module,
