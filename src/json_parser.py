@@ -15,6 +15,8 @@ from report.report_generator import ReportGenerator
 
 from SQLParser.SqlReportProcessor import SqlReportProcessor
 
+from MockSQLParser.MockSqlReportProcessor import MockSqlReportProcessor
+
 import time
 
 
@@ -23,7 +25,8 @@ class JsonParser(object):
     dir_path = path.dirname(path.realpath(__file__))
     files_directory = dir_path + '/../files/'
     logs_directory = dir_path + '/../output/logs/'
-    sqlreportprocessor = SqlReportProcessor()
+    # sqlreportprocessor = SqlReportProcessor() # Use this project to use antlr parser ; might prove useful if the amount of metrics increase
+    sqlreportprocessor = MockSqlReportProcessor() # Use this project to use minimalist SQL reader ; enough with current metrics
     nb_joins = 0
     nb_transactions = 0
     nb_select1 = 0

@@ -1,5 +1,5 @@
- 
-        <html> 
+
+        <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -13,18 +13,18 @@
                 </br></br>
                 
         <h2> Global info by requests</h2>
-        <h4> Proportion of requests executed by each component used in the requested action on OpenStack.</h4>
-        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no"         src="file:///media/romain/DATA/CoursMines/Annee3/TP/Research/Etienne/JSONParser/output/report/graphs/global_by_request_trace-create-and-delete-image.yaml.json.html"></iframe>
+        <h4> Proportion of requests executed by each component used         in the requested action on OpenStack.</h4>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless"        scrolling="no" src="file://C:\Users\Lea\Desktop\Etienne\Cours\Openstack\testFromScratchMockSQL\JSONParser\output\report\graphs\global_by_request_trace-create-and-delete-image.yaml.json.html"></iframe>
                 </br></br>
                 
         <h2> Global info by time</h2>
-        <h4> Time consumption for each component used in the requested action on OpenStack. </h4>
-        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no"         src="file:///media/romain/DATA/CoursMines/Annee3/TP/Research/Etienne/JSONParser/output/report/graphs/global_by_time_trace-create-and-delete-image.yaml.json.html"></iframe>
+        <h4> Time consumption for each component used         in the requested action on OpenStack. </h4>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless"         scrolling="no" src="file://C:\Users\Lea\Desktop\Etienne\Cours\Openstack\testFromScratchMockSQL\JSONParser\output\report\graphs\global_by_time_trace-create-and-delete-image.yaml.json.html"></iframe>
                 </br></br>
                 
         <h2> Global SQL info </h2>
-        <h4> Number of JOIN, SELECT 1 and transactions found in the executed requests from the action performed on OpenStack. </h4>
-        <iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no"         src="file:///media/romain/DATA/CoursMines/Annee3/TP/Research/Etienne/JSONParser/output/report/graphs/global_sql_trace-create-and-delete-image.yaml.json.html"></iframe>
+        <h4> Number of JOIN, SELECT 1 and transactions found in         the executed requests from the action performed on OpenStack. </h4>
+        <iframe width="1200" height="550" frameborder="0" seamless="seamless"         scrolling="no" src="file://C:\Users\Lea\Desktop\Etienne\Cours\Openstack\testFromScratchMockSQL\JSONParser\output\report\graphs\global_sql_trace-create-and-delete-image.yaml.json.html"></iframe>
                 </br></br>
                 <h2> Tree view of the request calls </h2>
                 <h4>This view shows the hierarchy between all the request that have been made throughout this trace</h4>
@@ -52,31 +52,31 @@
                 state: {
                     expanded:false
                 },
-                text: `[keystone] - 5ms 443Âµs - GET => /v3`,
+                text: `[keystone] - 5ms 443µs - GET => /v3`,
             },
             {
                 state: {
                     expanded:false
                 },
-                text: `[keystone] - 5ms 318Âµs - GET => /v3`,
+                text: `[keystone] - 5ms 318µs - GET => /v3`,
             },
             {
                 state: {
                     expanded:false
                 },
-                text: `[keystone] - 428ms 750Âµs - POST => /v3/auth/tokens`,
+                text: `[keystone] - 428ms 750µs - POST => /v3/auth/tokens`,
             nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 762Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 762µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 385Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 2ms 385µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s`,
         },
@@ -84,7 +84,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 356Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 356µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -93,7 +93,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 18Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 18µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -102,7 +102,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 49Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 49µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -111,7 +111,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 315Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 2ms 315µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -120,7 +120,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 418Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 2ms 418µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -129,13 +129,13 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 690Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 690µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 989Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 1ms 989µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user 
 WHERE user.id = %(param_1)s`,
         },
@@ -143,7 +143,7 @@ WHERE user.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 101Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 101µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -152,7 +152,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 29Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 29µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -161,7 +161,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 854Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 854µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -170,7 +170,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_d
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 145Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 2ms 145µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -179,7 +179,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id =
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 266Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 2ms 266µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -188,13 +188,13 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 671Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 671µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 118Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 2ms 118µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user 
 WHERE user.id = %(param_1)s`,
         },
@@ -202,7 +202,7 @@ WHERE user.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 256Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 256µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -211,7 +211,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 983Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 983µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -220,7 +220,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 44Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 44µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -229,7 +229,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_d
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 142Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 2ms 142µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -238,7 +238,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id =
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 190Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 2ms 190µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -247,13 +247,13 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 496Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 496µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 724Âµs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+            text: `[keystone] - 1ms 724µs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false`,
         },
@@ -261,13 +261,13 @@ WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(tar
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 134Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 134µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 566Âµs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+            text: `[keystone] - 1ms 566µs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true`,
         },
@@ -275,13 +275,13 @@ WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(tar
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 95Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 95µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 685Âµs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+            text: `[keystone] - 1ms 685µs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
 FROM project 
 WHERE project.id = %(param_1)s`,
         },
@@ -289,7 +289,7 @@ WHERE project.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 632Âµs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+            text: `[keystone] - 1ms 632µs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
 FROM project 
 WHERE project.id = %(param_1)s`,
         },
@@ -297,13 +297,13 @@ WHERE project.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 67Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 67µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 534Âµs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+            text: `[keystone] - 1ms 534µs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true`,
         },
@@ -311,13 +311,13 @@ WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(tar
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 55Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 55µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 263Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 2ms 263µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user 
 WHERE user.id = %(param_1)s`,
         },
@@ -325,7 +325,7 @@ WHERE user.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 7ms 581Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 7ms 581µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -334,7 +334,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 453Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 453µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -343,7 +343,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 477Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 477µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -352,7 +352,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_d
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 714Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 1ms 714µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -361,7 +361,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id =
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 763Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 1ms 763µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -370,7 +370,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 440Âµs - SELECT \`group\`.id AS group_id, \`group\`.name AS group_name, \`group\`.domain_id AS group_domain_id, \`group\`.description AS group_description, \`group\`.extra AS group_extra 
+            text: `[keystone] - 1ms 440µs - SELECT \`group\`.id AS group_id, \`group\`.name AS group_name, \`group\`.domain_id AS group_domain_id, \`group\`.description AS group_description, \`group\`.extra AS group_extra 
 FROM \`group\` INNER JOIN user_group_membership ON \`group\`.id = user_group_membership.group_id 
 WHERE user_group_membership.user_id = %(user_id_1)s`,
         },
@@ -378,13 +378,13 @@ WHERE user_group_membership.user_id = %(user_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 8Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 8µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 172Âµs - SELECT implied_role.prior_role_id AS implied_role_prior_role_id, implied_role.implied_role_id AS implied_role_implied_role_id 
+            text: `[keystone] - 1ms 172µs - SELECT implied_role.prior_role_id AS implied_role_prior_role_id, implied_role.implied_role_id AS implied_role_implied_role_id 
 FROM implied_role 
 WHERE implied_role.prior_role_id = %(prior_role_id_1)s`,
         },
@@ -392,13 +392,13 @@ WHERE implied_role.prior_role_id = %(prior_role_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 616Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 616µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 4ms 262Âµs - SELECT service.id AS service_id, service.type AS service_type, service.enabled AS service_enabled, service.extra AS service_extra, endpoint_1.id AS endpoint_1_id, endpoint_1.legacy_endpoint_id AS endpoint_1_legacy_endpoint_id, endpoint_1.interface AS endpoint_1_interface, endpoint_1.region_id AS endpoint_1_region_id, endpoint_1.service_id AS endpoint_1_service_id, endpoint_1.url AS endpoint_1_url, endpoint_1.enabled AS endpoint_1_enabled, endpoint_1.extra AS endpoint_1_extra 
+            text: `[keystone] - 4ms 262µs - SELECT service.id AS service_id, service.type AS service_type, service.enabled AS service_enabled, service.extra AS service_extra, endpoint_1.id AS endpoint_1_id, endpoint_1.legacy_endpoint_id AS endpoint_1_legacy_endpoint_id, endpoint_1.interface AS endpoint_1_interface, endpoint_1.region_id AS endpoint_1_region_id, endpoint_1.service_id AS endpoint_1_service_id, endpoint_1.url AS endpoint_1_url, endpoint_1.enabled AS endpoint_1_enabled, endpoint_1.extra AS endpoint_1_extra 
 FROM service LEFT OUTER JOIN endpoint AS endpoint_1 ON service.id = endpoint_1.service_id 
 WHERE service.enabled = true`,
         },
@@ -406,7 +406,7 @@ WHERE service.enabled = true`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 630Âµs - SELECT project_endpoint.endpoint_id AS project_endpoint_endpoint_id, project_endpoint.project_id AS project_endpoint_project_id 
+            text: `[keystone] - 1ms 630µs - SELECT project_endpoint.endpoint_id AS project_endpoint_endpoint_id, project_endpoint.project_id AS project_endpoint_project_id 
 FROM project_endpoint 
 WHERE project_endpoint.project_id = %(project_id_1)s`,
         },
@@ -414,7 +414,7 @@ WHERE project_endpoint.project_id = %(project_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 625Âµs - SELECT project_endpoint_group.endpoint_group_id AS project_endpoint_group_endpoint_group_id, project_endpoint_group.project_id AS project_endpoint_group_project_id 
+            text: `[keystone] - 1ms 625µs - SELECT project_endpoint_group.endpoint_group_id AS project_endpoint_group_endpoint_group_id, project_endpoint_group.project_id AS project_endpoint_group_project_id 
 FROM project_endpoint_group 
 WHERE project_endpoint_group.project_id = %(project_id_1)s`,
         },
@@ -422,37 +422,37 @@ WHERE project_endpoint_group.project_id = %(project_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 622Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 622µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 87Âµs - INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)`,
+            text: `[keystone] - 2ms 87µs - INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)`,
         },]},
             {
                 state: {
                     expanded:false
                 },
-                text: `[glance] - 408ms 732Âµs - GET => /v2/schemas/image`,
+                text: `[glance] - 408ms 732µs - GET => /v2/schemas/image`,
             nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 301ms 394Âµs - POST => /v3/auth/tokens`,
+            text: `[keystone] - 301ms 394µs - POST => /v3/auth/tokens`,
         nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 558Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 558µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 348Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 2ms 348µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s`,
         },
@@ -460,7 +460,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 149Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 149µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -469,7 +469,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 32Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 32µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -478,7 +478,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 85Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 85µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -487,7 +487,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 276Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 2ms 276µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -496,7 +496,7 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 280Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 2ms 280µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
 WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -505,13 +505,13 @@ WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) A
             state: {
                 expanded: false
             },
-            text: `[keystone] - 5ms 704Âµs - SELECT 1`,
+            text: `[keystone] - 5ms 704µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 74Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 2ms 74µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user 
 WHERE user.id = %(param_1)s`,
         },
@@ -519,7 +519,7 @@ WHERE user.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 222Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 222µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -528,7 +528,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 784Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 784µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -537,7 +537,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 6Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 6µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -546,7 +546,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_d
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 287Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 2ms 287µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -555,7 +555,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id =
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 319Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 2ms 319µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -564,13 +564,13 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 267Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 267µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 825Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 1ms 825µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user 
 WHERE user.id = %(param_1)s`,
         },
@@ -578,7 +578,7 @@ WHERE user.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 906Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 906µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -587,7 +587,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 670Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 670µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -596,7 +596,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 866Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 866µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -605,7 +605,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_d
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 42Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 2ms 42µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -614,7 +614,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id =
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 66Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 2ms 66µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -623,13 +623,13 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 4ms 786Âµs - SELECT 1`,
+            text: `[keystone] - 4ms 786µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 911Âµs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+            text: `[keystone] - 1ms 911µs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false`,
         },
@@ -637,13 +637,13 @@ WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(tar
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 216Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 216µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 827Âµs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+            text: `[keystone] - 1ms 827µs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true`,
         },
@@ -651,13 +651,13 @@ WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(tar
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 171Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 171µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 766Âµs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+            text: `[keystone] - 1ms 766µs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
 FROM project 
 WHERE project.id = %(param_1)s`,
         },
@@ -665,7 +665,7 @@ WHERE project.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 698Âµs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+            text: `[keystone] - 1ms 698µs - SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
 FROM project 
 WHERE project.id = %(param_1)s`,
         },
@@ -673,13 +673,13 @@ WHERE project.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 223Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 223µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 699Âµs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+            text: `[keystone] - 1ms 699µs - SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
 FROM assignment 
 WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true`,
         },
@@ -687,13 +687,13 @@ WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(tar
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 187Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 187µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 791Âµs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+            text: `[keystone] - 1ms 791µs - SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
 FROM user 
 WHERE user.id = %(param_1)s`,
         },
@@ -701,7 +701,7 @@ WHERE user.id = %(param_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 699Âµs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 699µs - SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id`,
@@ -710,7 +710,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 513Âµs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 1ms 513µs - SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id`,
@@ -719,7 +719,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 74Âµs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+            text: `[keystone] - 2ms 74µs - SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
 FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id`,
@@ -728,7 +728,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_d
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 793Âµs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+            text: `[keystone] - 1ms 793µs - SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id`,
@@ -737,7 +737,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id =
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 875Âµs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+            text: `[keystone] - 1ms 875µs - SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
 FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
 FROM user 
 WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at`,
@@ -746,7 +746,7 @@ WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON 
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 517Âµs - SELECT \`group\`.id AS group_id, \`group\`.name AS group_name, \`group\`.domain_id AS group_domain_id, \`group\`.description AS group_description, \`group\`.extra AS group_extra 
+            text: `[keystone] - 1ms 517µs - SELECT \`group\`.id AS group_id, \`group\`.name AS group_name, \`group\`.domain_id AS group_domain_id, \`group\`.description AS group_description, \`group\`.extra AS group_extra 
 FROM \`group\` INNER JOIN user_group_membership ON \`group\`.id = user_group_membership.group_id 
 WHERE user_group_membership.user_id = %(user_id_1)s`,
         },
@@ -754,13 +754,13 @@ WHERE user_group_membership.user_id = %(user_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 102Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 102µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 296Âµs - SELECT implied_role.prior_role_id AS implied_role_prior_role_id, implied_role.implied_role_id AS implied_role_implied_role_id 
+            text: `[keystone] - 1ms 296µs - SELECT implied_role.prior_role_id AS implied_role_prior_role_id, implied_role.implied_role_id AS implied_role_implied_role_id 
 FROM implied_role 
 WHERE implied_role.prior_role_id = %(prior_role_id_1)s`,
         },
@@ -768,31 +768,31 @@ WHERE implied_role.prior_role_id = %(prior_role_id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 109Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 109µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 722Âµs - INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)`,
+            text: `[keystone] - 1ms 722µs - INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)`,
         },]},
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 73ms 983Âµs - GET => /v3/auth/tokens`,
+            text: `[keystone] - 73ms 983µs - GET => /v3/auth/tokens`,
         nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 549Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 549µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 495Âµs - SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
+            text: `[keystone] - 2ms 495µs - SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)`,
         },
@@ -800,13 +800,13 @@ WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_even
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 335Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 335µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 377Âµs - SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
+            text: `[keystone] - 2ms 377µs - SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)`,
         },
@@ -814,13 +814,13 @@ WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_even
             state: {
                 expanded: false
             },
-            text: `[keystone] - 1ms 252Âµs - SELECT 1`,
+            text: `[keystone] - 1ms 252µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[keystone] - 2ms 395Âµs - SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
+            text: `[keystone] - 2ms 395µs - SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
 FROM revocation_event 
 WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)`,
         },]},]},
@@ -828,25 +828,25 @@ WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_even
                 state: {
                     expanded:false
                 },
-                text: `[glance] - 139ms 61Âµs - POST => /v2/images`,
+                text: `[glance] - 139ms 61µs - POST => /v2/images`,
             nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 327Âµs - SELECT 1`,
+            text: `[glance] - 1ms 327µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 784Âµs - INSERT INTO images (created_at, updated_at, deleted_at, deleted, id, name, disk_format, container_format, size, virtual_size, status, visibility, checksum, min_disk, min_ram, owner, protected) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(deleted)s, %(id)s, %(name)s, %(disk_format)s, %(container_format)s, %(size)s, %(virtual_size)s, %(status)s, %(visibility)s, %(checksum)s, %(min_disk)s, %(min_ram)s, %(owner)s, %(protected)s)`,
+            text: `[glance] - 1ms 784µs - INSERT INTO images (created_at, updated_at, deleted_at, deleted, id, name, disk_format, container_format, size, virtual_size, status, visibility, checksum, min_disk, min_ram, owner, protected) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(deleted)s, %(id)s, %(name)s, %(disk_format)s, %(container_format)s, %(size)s, %(virtual_size)s, %(status)s, %(visibility)s, %(checksum)s, %(min_disk)s, %(min_ram)s, %(owner)s, %(protected)s)`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 931Âµs - SELECT image_properties.created_at AS image_properties_created_at, image_properties.updated_at AS image_properties_updated_at, image_properties.deleted_at AS image_properties_deleted_at, image_properties.deleted AS image_properties_deleted, image_properties.id AS image_properties_id, image_properties.image_id AS image_properties_image_id, image_properties.name AS image_properties_name, image_properties.value AS image_properties_value 
+            text: `[glance] - 1ms 931µs - SELECT image_properties.created_at AS image_properties_created_at, image_properties.updated_at AS image_properties_updated_at, image_properties.deleted_at AS image_properties_deleted_at, image_properties.deleted AS image_properties_deleted, image_properties.id AS image_properties_id, image_properties.image_id AS image_properties_image_id, image_properties.name AS image_properties_name, image_properties.value AS image_properties_value 
 FROM image_properties 
 WHERE %(param_1)s = image_properties.image_id`,
         },
@@ -854,13 +854,13 @@ WHERE %(param_1)s = image_properties.image_id`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 543Âµs - SELECT 1`,
+            text: `[glance] - 1ms 543µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 32ms 252Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 32ms 252µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -868,13 +868,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 552Âµs - SELECT 1`,
+            text: `[glance] - 1ms 552µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 862Âµs - SELECT image_tags.value AS image_tags_value 
+            text: `[glance] - 1ms 862µs - SELECT image_tags.value AS image_tags_value 
 FROM image_tags 
 WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
         },]},
@@ -882,19 +882,19 @@ WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
                 state: {
                     expanded:false
                 },
-                text: `[glance] - 66ms 297Âµs - GET => /v2/images/e056c32a-6171-4167-8826-0001320665b5`,
+                text: `[glance] - 66ms 297µs - GET => /v2/images/e056c32a-6171-4167-8826-0001320665b5`,
             nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 28ms 511Âµs - SELECT 1`,
+            text: `[glance] - 28ms 511µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 4ms 195Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 4ms 195µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -902,13 +902,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 465Âµs - SELECT 1`,
+            text: `[glance] - 1ms 465µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 550Âµs - SELECT image_tags.value AS image_tags_value 
+            text: `[glance] - 1ms 550µs - SELECT image_tags.value AS image_tags_value 
 FROM image_tags 
 WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
         },]},
@@ -916,25 +916,25 @@ WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
                 state: {
                     expanded:false
                 },
-                text: `[glance] - 5ms 778Âµs - GET => /v2/schemas/image`,
+                text: `[glance] - 5ms 778µs - GET => /v2/schemas/image`,
             },
             {
                 state: {
                     expanded:false
                 },
-                text: `[glance] - 4m 52s 665ms 111Âµs - PUT => /v2/images/e056c32a-6171-4167-8826-0001320665b5/file`,
+                text: `[glance] - 4m 52s 665ms 111µs - PUT => /v2/images/e056c32a-6171-4167-8826-0001320665b5/file`,
             nodes: [
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 832Âµs - SELECT 1`,
+            text: `[glance] - 1ms 832µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 4ms 926Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 4ms 926µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -942,13 +942,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 431Âµs - SELECT 1`,
+            text: `[glance] - 1ms 431µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 687Âµs - SELECT image_tags.value AS image_tags_value 
+            text: `[glance] - 1ms 687µs - SELECT image_tags.value AS image_tags_value 
 FROM image_tags 
 WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
         },
@@ -956,13 +956,13 @@ WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 435Âµs - SELECT 1`,
+            text: `[glance] - 1ms 435µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 3ms 584Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 3ms 584µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -970,7 +970,7 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 583Âµs - SELECT images.id AS images_id 
+            text: `[glance] - 1ms 583µs - SELECT images.id AS images_id 
 FROM images 
 WHERE images.id = %(id_1)s AND images.status = %(status_1)s`,
         },
@@ -978,13 +978,13 @@ WHERE images.id = %(id_1)s AND images.status = %(status_1)s`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 898Âµs - UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s AND images.status = %(status_1)s`,
+            text: `[glance] - 1ms 898µs - UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s AND images.status = %(status_1)s`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 3ms 501Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 3ms 501µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -992,13 +992,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 257Âµs - SELECT 1`,
+            text: `[glance] - 1ms 257µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 3ms 264Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 3ms 264µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -1006,13 +1006,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 35ms 470Âµs - SELECT 1`,
+            text: `[glance] - 35ms 470µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 822Âµs - SELECT image_tags.value AS image_tags_value 
+            text: `[glance] - 1ms 822µs - SELECT image_tags.value AS image_tags_value 
 FROM image_tags 
 WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
         },
@@ -1020,13 +1020,13 @@ WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 2ms 260Âµs - SELECT 1`,
+            text: `[glance] - 2ms 260µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 4ms 868Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 4ms 868µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -1034,7 +1034,7 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 2ms 55Âµs - SELECT images.id AS images_id 
+            text: `[glance] - 2ms 55µs - SELECT images.id AS images_id 
 FROM images 
 WHERE images.id = %(id_1)s`,
         },
@@ -1042,13 +1042,13 @@ WHERE images.id = %(id_1)s`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 2ms 199Âµs - UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s`,
+            text: `[glance] - 2ms 199µs - UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 4ms 59Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 4ms 59µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -1056,13 +1056,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 10ms 955Âµs - SELECT 1`,
+            text: `[glance] - 10ms 955µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 4ms 0Âµs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+            text: `[glance] - 4ms 0µs - SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
 FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
 WHERE images.id = %(id_1)s AND images.deleted = false`,
         },
@@ -1070,13 +1070,13 @@ WHERE images.id = %(id_1)s AND images.deleted = false`,
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 463Âµs - SELECT 1`,
+            text: `[glance] - 1ms 463µs - SELECT 1`,
         },
         {
             state: {
                 expanded: false
             },
-            text: `[glance] - 1ms 643Âµs - SELECT image_tags.value AS image_tags_value 
+            text: `[glance] - 1ms 643µs - SELECT image_tags.value AS image_tags_value 
 FROM image_tags 
 WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
         },]},
@@ -1095,13 +1095,13 @@ WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false`,
                     exactMatch: false,
                     revealResults: true
                 }]);
-            }  
+            }
 
             function filterInput(e){
                 if(e.keyCode == 13){
                     filter();
                 }
-            }     
+            }
 
             </script>
             </body>
