@@ -37,7 +37,7 @@ class ReportGenerator(object):
         <h4> Proportion of requests executed by each component used \
         in the requested action on OpenStack.</h4>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless"\
-        scrolling="no" src="''' + graph_path + '''"></iframe>'''
+        scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
 
     def generate_global_graph_bytime(self):
         labels = []
@@ -60,7 +60,7 @@ class ReportGenerator(object):
         <h4> Time consumption for each component used \
         in the requested action on OpenStack. </h4>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless" \
-        scrolling="no" src="''' + graph_path + '''"></iframe>'''
+        scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
 
     def generate_global_sql_graph(self):
         nb_db_requests = 0
@@ -89,7 +89,7 @@ class ReportGenerator(object):
         <h4> Number of JOIN, SELECT 1 and transactions found in \
         the executed requests from the action performed on OpenStack. </h4>
         <iframe width="1200" height="550" frameborder="0" seamless="seamless" \
-        scrolling="no" src="''' + graph_path + '''"></iframe>'''
+        scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
 
     def generate_tree(self):
         html_string = '''
@@ -149,7 +149,7 @@ class ReportGenerator(object):
         html_list = ""
 
         for file in files:
-            html_list += '<li><a href="' + file + '">' + path.basename(file) + '</a></li>\n'
+            html_list += '<li><a href="' + path.basename(file) + '">' + path.basename(file) + '</a></li>\n'
 
         html_string = '''
         <html>
