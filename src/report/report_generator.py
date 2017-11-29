@@ -7,7 +7,7 @@ import plotly.graph_objs as graph_objs
 class ReportGenerator(object):
 
     dir_path = path.dirname(path.realpath(__file__))
-    report_directory = dir_path + '/../../report/'
+    report_directory = dir_path + '/../../output/report/'
     graph_directory = report_directory + 'graphs/'
 
 

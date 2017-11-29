@@ -21,6 +21,7 @@ class JsonParser(object):
     """Class used to parse Json files from openstack"""
     dir_path = path.dirname(path.realpath(__file__))
     files_directory = dir_path + '/../files/'
+    logs_directory = dir_path + '/../output/logs/'
     sqlreportprocessor = SqlReportProcessor()
     nb_joins = 0
     nb_transactions = 0
@@ -36,11 +37,11 @@ class JsonParser(object):
 
     def initialize_jsondata(self):
         for file in self.files:
-            self.json_data[file] = (self.util.read_jsonfile(file))
+            self.json_data[path.basename(file)] = (self.util.read_jsonfile(file))
 
     def extract_from_json(self):
         for (key, json) in self.json_data.items():
-            self.extract_generalinfo(path.basename(key), json)
+            self.extract_generalinfo(key, json)
             self.nb_joins = 0
             self.nb_transactions = 0
             self.nb_select1 = 0
@@ -69,7 +70,8 @@ class JsonParser(object):
         general_info.total_select1 = self.nb_select1
 
         self.object_data[file] = general_info
-        print(general_info.__str__())
+        
+        self.generate_log(file, general_info)
 
 
     def explore_child(self, child, parent):
@@ -216,3 +218,8 @@ class JsonParser(object):
         )
 
         return http_component
+
+    def generate_log(self, file, general_info):
+        with open(self.logs_directory + file + ".log", "w") as output_file:
+            output_file.write(general_info.__str__())
+            output_file.close()

@@ -1,0 +1,1999 @@
+---------------------------
+trace-create-and-delete-image.yaml.json
+---------------------------
+Total joins : 81
+Total transactions : 0
+---------------------------
+Name : wsgi
+Count : 10
+Duration : 294101
+
+Name : db
+Count : 127
+Duration : 354
+
+---------------------------
+HTTP_COMPONENT
+Name : wsgi
+Project : keystone
+Duration : 5ms 443µs
+Trace id : e1ab54d3-04f5-4c55-aa12-b1007d821680
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v3
+Scheme : http
+Method : GET
+Query : 
+
+HTTP_COMPONENT
+Name : wsgi
+Project : keystone
+Duration : 5ms 318µs
+Trace id : 15ee3859-0bfd-4322-add0-eea252b3625b
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v3
+Scheme : http
+Method : GET
+Query : 
+
+HTTP_COMPONENT
+Name : wsgi
+Project : keystone
+Duration : 428ms 750µs
+Trace id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v3/auth/tokens
+Scheme : http
+Method : POST
+Query : 
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 762µs
+Trace id : 78acbf41-ed63-4677-b9ca-520884fe2908
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 385µs
+Trace id : 0dda7353-277f-4fde-a1d7-a4f89326258e
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 356µs
+Trace id : 3a9b8239-0dd0-450c-9004-99359c1c0489
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 18µs
+Trace id : d438f7f6-1fe1-4788-9ba0-968fbc67525b
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 49µs
+Trace id : 6c535f4a-b63f-4c60-9d03-5f448e70f33b
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 315µs
+Trace id : 3806c1f7-8752-49f9-8602-4f2380fc0c4e
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 418µs
+Trace id : 35f9bb7e-1dca-4ae1-85aa-75871673c1db
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 3
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 690µs
+Trace id : 466a3df0-8827-4b2b-b797-94f57411f566
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 989µs
+Trace id : aa559bcc-fe41-4b91-9a43-2f7604ebc60c
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user 
+WHERE user.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 101µs
+Trace id : 3783cf16-7632-4843-a132-4246f303f379
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 29µs
+Trace id : 81d4c749-b023-4c5c-bf74-c5dc7970daee
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 854µs
+Trace id : 77d9239b-c6a8-465e-a95a-d8f9b1c82979
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 145µs
+Trace id : 329c03f8-6be3-4f2a-9575-de43715afe35
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 266µs
+Trace id : 43bb4f48-f94e-4856-9071-f147579e00ba
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 671µs
+Trace id : 6ef84a86-6597-455e-ab47-e6c7bc14b734
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 118µs
+Trace id : 800045f0-0bde-47ba-ab5e-721a40950de7
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user 
+WHERE user.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 256µs
+Trace id : d3a86fc6-31c6-4240-99bb-14d15e9f05e1
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 983µs
+Trace id : 0245609c-aad8-4c03-8cde-13a7a105b752
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 44µs
+Trace id : 211d788b-2617-48e2-88cc-1f2b3b836ed7
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 142µs
+Trace id : ee077e09-e891-4094-82c8-1262d3c6d528
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 190µs
+Trace id : 60ea20b8-e5e2-481c-aa23-0d445f85231a
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 496µs
+Trace id : 2729d1a9-5ea7-4948-ac6d-013e8fa1d0d9
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 724µs
+Trace id : ebb26d6e-55c4-4b49-af31-6fde43d065e2
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+FROM assignment 
+WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false
+{actor_id_1, type_1, target_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 134µs
+Trace id : 0ee46c5a-958c-4dfc-a107-c0eedd0c382b
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 566µs
+Trace id : af257ec1-f11d-48df-b98b-2b288c1e7b43
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+FROM assignment 
+WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
+{actor_id_1, type_1, target_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 95µs
+Trace id : b8b786a0-e568-49c1-98d6-058e745e8a7c
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 685µs
+Trace id : 3d582ea2-cad8-4b52-b6c6-ae546f1b5a39
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+FROM project 
+WHERE project.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 632µs
+Trace id : 3eb3d805-0f4f-471b-8b01-035cff4c487b
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+FROM project 
+WHERE project.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 67µs
+Trace id : a5511647-c8c6-40ea-afac-a035250ecd45
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 534µs
+Trace id : 7d1bd05d-862b-470a-a810-c9734b9bb819
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+FROM assignment 
+WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
+{actor_id_1, type_1, target_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 55µs
+Trace id : 074502d9-b66f-4299-87f7-6605cae7e62f
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 263µs
+Trace id : caf9562e-d188-4997-9487-7b6598120091
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user 
+WHERE user.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 7ms 581µs
+Trace id : fb3a7322-2396-4c53-8ec9-b2e112d24e5e
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 453µs
+Trace id : 8ccabc6a-5974-4b5e-92c4-78b9621686ff
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 477µs
+Trace id : 005c5f2e-1680-46fc-bd38-8ed0749108d7
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 714µs
+Trace id : 6954dd64-e0e9-4e52-93b3-809400a4604a
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 763µs
+Trace id : 86d248a0-d353-4083-ab27-df91803457c5
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 440µs
+Trace id : 70ce2fdb-e867-4964-af2a-849380f9b774
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT `group`.id AS group_id, `group`.name AS group_name, `group`.domain_id AS group_domain_id, `group`.description AS group_description, `group`.extra AS group_extra 
+FROM `group` INNER JOIN user_group_membership ON `group`.id = user_group_membership.group_id 
+WHERE user_group_membership.user_id = %(user_id_1)s
+{user_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 8µs
+Trace id : 9b3378b0-762c-4718-8fe7-0550462ae444
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 172µs
+Trace id : 9a3ef80f-3da3-4be7-8803-c78b25b4c033
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT implied_role.prior_role_id AS implied_role_prior_role_id, implied_role.implied_role_id AS implied_role_implied_role_id 
+FROM implied_role 
+WHERE implied_role.prior_role_id = %(prior_role_id_1)s
+{prior_role_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 616µs
+Trace id : eade9c4c-474a-4403-898b-877435655a48
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 4ms 262µs
+Trace id : e5283009-4095-464a-80ed-ae3a7c55bb64
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT service.id AS service_id, service.type AS service_type, service.enabled AS service_enabled, service.extra AS service_extra, endpoint_1.id AS endpoint_1_id, endpoint_1.legacy_endpoint_id AS endpoint_1_legacy_endpoint_id, endpoint_1.interface AS endpoint_1_interface, endpoint_1.region_id AS endpoint_1_region_id, endpoint_1.service_id AS endpoint_1_service_id, endpoint_1.url AS endpoint_1_url, endpoint_1.enabled AS endpoint_1_enabled, endpoint_1.extra AS endpoint_1_extra 
+FROM service LEFT OUTER JOIN endpoint AS endpoint_1 ON service.id = endpoint_1.service_id 
+WHERE service.enabled = true
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 630µs
+Trace id : 4f0e801c-ce66-4c81-b21a-f5ccf9a02158
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT project_endpoint.endpoint_id AS project_endpoint_endpoint_id, project_endpoint.project_id AS project_endpoint_project_id 
+FROM project_endpoint 
+WHERE project_endpoint.project_id = %(project_id_1)s
+{project_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 625µs
+Trace id : 1c0ed9bd-36a4-47f8-9991-d76f2cfd7d36
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT project_endpoint_group.endpoint_group_id AS project_endpoint_group_endpoint_group_id, project_endpoint_group.project_id AS project_endpoint_group_project_id 
+FROM project_endpoint_group 
+WHERE project_endpoint_group.project_id = %(project_id_1)s
+{project_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 622µs
+Trace id : 4b53f21f-0ef6-437d-969a-7fdf73548b3f
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 87µs
+Trace id : f51e739b-fad0-4964-84ee-4b8cb7dacd06
+Parent id : 25b2e887-66fd-4a60-b860-dbd45fcec9df
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)
+{user_id, id, expires, extra, valid, trust_id, }
+
+
+HTTP_COMPONENT
+Name : wsgi
+Project : glance
+Duration : 408ms 732µs
+Trace id : de4528f1-3b6b-416d-9a73-3a6659ac6c44
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v2/schemas/image
+Scheme : http
+Method : GET
+Query : 
+HTTP_COMPONENT
+Name : wsgi
+Project : keystone
+Duration : 301ms 394µs
+Trace id : a34647ee-8651-432f-9152-bc2ea0628274
+Parent id : de4528f1-3b6b-416d-9a73-3a6659ac6c44
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v3/auth/tokens
+Scheme : http
+Method : POST
+Query : 
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 558µs
+Trace id : f9fdbddc-7d7a-4f76-b186-d7ab416f1bed
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 348µs
+Trace id : 0c6cf682-8169-4c3b-8998-55099ce04885
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 149µs
+Trace id : bcdfb086-ffc5-4d48-9652-f6f296107425
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 32µs
+Trace id : 0fe57af3-7291-41cb-92f8-8c406025b715
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 85µs
+Trace id : 58138964-6ea6-4c3f-a95e-51f5e5ae51df
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 276µs
+Trace id : de31ea04-0584-4b7f-86f4-a40e4b07ee73
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 280µs
+Trace id : f57ae19a-2bbf-4fb2-b433-bdaa6b73d4c3
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 3
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user INNER JOIN local_user ON user.id = local_user.user_id AND user.domain_id = local_user.domain_id 
+WHERE local_user.name = %(name_1)s AND local_user.domain_id = %(domain_id_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{domain_id_1, name_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 5ms 704µs
+Trace id : b9de583b-4634-435a-a625-486689dadee6
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 74µs
+Trace id : 19c1ab28-0c79-4c05-b31c-32ed95419596
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user 
+WHERE user.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 222µs
+Trace id : 956bbef0-f0c6-42c7-8975-cd9b98cea95b
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 784µs
+Trace id : 93b881b7-69c7-4f24-90a5-81bf2c9ee18e
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 6µs
+Trace id : 37c6a110-dd55-489c-aca1-847afd1ec457
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 287µs
+Trace id : 75233b43-b258-4c3d-964f-a1ac2ebf6803
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 319µs
+Trace id : 487606f7-92bc-43be-8a00-bf50d34344e0
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 267µs
+Trace id : bb9c0079-aafd-41a5-b138-0ec7dc21420d
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 825µs
+Trace id : 9012a06f-4770-4ac7-8b1f-963dee1bdf22
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user 
+WHERE user.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 906µs
+Trace id : 86dd0725-7978-4011-8212-c38710e8229f
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 670µs
+Trace id : 8393ec89-270d-47d8-bfd4-d1714bc10d85
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 866µs
+Trace id : 6c30687b-cafb-4094-a6da-73d4a1f81803
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 42µs
+Trace id : 4c485fc6-63e2-4d6c-880b-b49d3bf8f4b3
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 66µs
+Trace id : c5b6ca4d-79c0-4f4f-a775-64ee57bda1af
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 4ms 786µs
+Trace id : 254e4104-7691-49f3-ae4f-a9d61a4140ee
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 911µs
+Trace id : e290fb7e-941c-4af5-bbae-e67457b07d35
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+FROM assignment 
+WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = false
+{actor_id_1, type_1, target_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 216µs
+Trace id : 1c0f8e13-1b7c-43de-bcce-cf35d9340929
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 827µs
+Trace id : 2958ca52-3634-4eb2-a5c3-a651b1a3425a
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+FROM assignment 
+WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
+{actor_id_1, type_1, target_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 171µs
+Trace id : 67368275-62ec-48f5-b91d-44266a385273
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 766µs
+Trace id : 78732cda-e3ae-4295-9f6f-7d6049d0dc20
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+FROM project 
+WHERE project.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 698µs
+Trace id : bd3593ff-3402-4c33-a5ed-3550dfed41f4
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT project.id AS project_id, project.name AS project_name, project.domain_id AS project_domain_id, project.description AS project_description, project.enabled AS project_enabled, project.extra AS project_extra, project.parent_id AS project_parent_id, project.is_domain AS project_is_domain 
+FROM project 
+WHERE project.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 223µs
+Trace id : 43fcb997-3c64-45d1-b3d1-bb4ce0144bc0
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 699µs
+Trace id : 0aebdb3a-3c5f-4408-9a38-fdbde0d632af
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT assignment.type AS assignment_type, assignment.actor_id AS assignment_actor_id, assignment.target_id AS assignment_target_id, assignment.role_id AS assignment_role_id, assignment.inherited AS assignment_inherited 
+FROM assignment 
+WHERE assignment.actor_id IN (%(actor_id_1)s) AND assignment.target_id IN (%(target_id_1)s) AND assignment.type IN (%(type_1)s) AND assignment.inherited = true
+{actor_id_1, type_1, target_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 187µs
+Trace id : 092bc861-0ae8-48c3-9f5a-ffbe0d1f7761
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 791µs
+Trace id : 33a64969-7400-4301-87e1-04127db3f106
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user.enabled AS user_enabled, user.id AS user_id, user.domain_id AS user_domain_id, user.extra AS user_extra, user.default_project_id AS user_default_project_id, user.created_at AS user_created_at, user.last_active_at AS user_last_active_at 
+FROM user 
+WHERE user.id = %(param_1)s
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 699µs
+Trace id : 314cce11-75ff-4593-a855-a891db91d16a
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT federated_user.id AS federated_user_id, federated_user.user_id AS federated_user_user_id, federated_user.idp_id AS federated_user_idp_id, federated_user.protocol_id AS federated_user_protocol_id, federated_user.unique_id AS federated_user_unique_id, federated_user.display_name AS federated_user_display_name, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN federated_user ON anon_1.user_id = federated_user.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 513µs
+Trace id : 2e3599a7-02ba-49c6-ae72-7c39a7304ad2
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT user_option.user_id AS user_option_user_id, user_option.option_id AS user_option_option_id, user_option.option_value AS user_option_option_value, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN user_option ON anon_1.user_id = user_option.user_id ORDER BY anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 74µs
+Trace id : 62003e65-b3c4-40bb-b1e2-94bda0b9d0fe
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT nonlocal_user.domain_id AS nonlocal_user_domain_id, nonlocal_user.name AS nonlocal_user_name, nonlocal_user.user_id AS nonlocal_user_user_id, anon_1.user_domain_id AS anon_1_user_domain_id, anon_1.user_id AS anon_1_user_id 
+FROM (SELECT user.domain_id AS user_domain_id, user.id AS user_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN nonlocal_user ON anon_1.user_domain_id = nonlocal_user.domain_id AND anon_1.user_id = nonlocal_user.user_id ORDER BY anon_1.user_domain_id, anon_1.user_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 793µs
+Trace id : 37e27533-bfae-484b-b3bd-a6d7c60b215e
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT local_user.id AS local_user_id, local_user.user_id AS local_user_user_id, local_user.domain_id AS local_user_domain_id, local_user.name AS local_user_name, local_user.failed_auth_count AS local_user_failed_auth_count, local_user.failed_auth_at AS local_user_failed_auth_at, anon_1.user_id AS anon_1_user_id, anon_1.user_domain_id AS anon_1_user_domain_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user ON anon_1.user_id = local_user.user_id AND anon_1.user_domain_id = local_user.domain_id ORDER BY anon_1.user_id, anon_1.user_domain_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 875µs
+Trace id : 5a4e6735-c19c-4b7a-9023-4053650cbb1c
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT password.id AS password_id, password.local_user_id AS password_local_user_id, password.password AS password_password, password.created_at AS password_created_at, password.expires_at AS password_expires_at, password.self_service AS password_self_service, local_user_1.id AS local_user_1_id 
+FROM (SELECT user.id AS user_id, user.domain_id AS user_domain_id 
+FROM user 
+WHERE user.id = %(param_1)s) AS anon_1 INNER JOIN local_user AS local_user_1 ON anon_1.user_id = local_user_1.user_id AND anon_1.user_domain_id = local_user_1.domain_id INNER JOIN password ON local_user_1.id = password.local_user_id ORDER BY local_user_1.id, password.created_at
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 517µs
+Trace id : 52e9fcf4-26f7-4635-b93b-47604435ce40
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 1
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT `group`.id AS group_id, `group`.name AS group_name, `group`.domain_id AS group_domain_id, `group`.description AS group_description, `group`.extra AS group_extra 
+FROM `group` INNER JOIN user_group_membership ON `group`.id = user_group_membership.group_id 
+WHERE user_group_membership.user_id = %(user_id_1)s
+{user_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 102µs
+Trace id : d664e494-314c-4898-84d0-65e9b455eb86
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 296µs
+Trace id : 88761e9d-06cb-4d4b-bfbb-174493019e56
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT implied_role.prior_role_id AS implied_role_prior_role_id, implied_role.implied_role_id AS implied_role_implied_role_id 
+FROM implied_role 
+WHERE implied_role.prior_role_id = %(prior_role_id_1)s
+{prior_role_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 109µs
+Trace id : aace4f6b-b0e1-47a1-ad9e-1d9cae97bd16
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 722µs
+Trace id : a21826f1-23c6-4392-9d45-b5c85f8a1785
+Parent id : a34647ee-8651-432f-9152-bc2ea0628274
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : INSERT INTO token (id, expires, extra, valid, user_id, trust_id) VALUES (%(id)s, %(expires)s, %(extra)s, %(valid)s, %(user_id)s, %(trust_id)s)
+{user_id, id, expires, extra, valid, trust_id, }
+
+
+HTTP_COMPONENT
+Name : wsgi
+Project : keystone
+Duration : 73ms 983µs
+Trace id : be0547fe-960f-4bce-b731-61e1e55e2abb
+Parent id : de4528f1-3b6b-416d-9a73-3a6659ac6c44
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v3/auth/tokens
+Scheme : http
+Method : GET
+Query : 
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 549µs
+Trace id : e95997a8-f3e2-48d4-a008-3a6868a5351f
+Parent id : be0547fe-960f-4bce-b731-61e1e55e2abb
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 495µs
+Trace id : 5a2fb635-87a6-40f5-b270-63225472e8f7
+Parent id : be0547fe-960f-4bce-b731-61e1e55e2abb
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
+FROM revocation_event 
+WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
+{audit_id_1, issued_before_1, user_id_1, project_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 335µs
+Trace id : fe820e2b-d3a4-402d-aad7-daddfa84b97a
+Parent id : be0547fe-960f-4bce-b731-61e1e55e2abb
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 377µs
+Trace id : aa8ae10a-5866-4b1e-8185-55f26835ee80
+Parent id : be0547fe-960f-4bce-b731-61e1e55e2abb
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
+FROM revocation_event 
+WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
+{audit_id_1, issued_before_1, user_id_1, project_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 1ms 252µs
+Trace id : 4bd0519a-1459-4965-af6b-8bf9e2236d44
+Parent id : be0547fe-960f-4bce-b731-61e1e55e2abb
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : keystone
+Duration : 2ms 395µs
+Trace id : 52f5715c-6767-48f5-8c69-0d71bc31fa34
+Parent id : be0547fe-960f-4bce-b731-61e1e55e2abb
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT revocation_event.id AS revocation_event_id, revocation_event.domain_id AS revocation_event_domain_id, revocation_event.project_id AS revocation_event_project_id, revocation_event.user_id AS revocation_event_user_id, revocation_event.role_id AS revocation_event_role_id, revocation_event.trust_id AS revocation_event_trust_id, revocation_event.consumer_id AS revocation_event_consumer_id, revocation_event.access_token_id AS revocation_event_access_token_id, revocation_event.issued_before AS revocation_event_issued_before, revocation_event.expires_at AS revocation_event_expires_at, revocation_event.revoked_at AS revocation_event_revoked_at, revocation_event.audit_id AS revocation_event_audit_id, revocation_event.audit_chain_id AS revocation_event_audit_chain_id 
+FROM revocation_event 
+WHERE revocation_event.issued_before >= %(issued_before_1)s AND (revocation_event.user_id IS NULL OR revocation_event.user_id = %(user_id_1)s) AND (revocation_event.project_id IS NULL OR revocation_event.project_id = %(project_id_1)s) AND (revocation_event.audit_id IS NULL OR revocation_event.audit_id = %(audit_id_1)s)
+{audit_id_1, issued_before_1, user_id_1, project_id_1, }
+
+
+
+HTTP_COMPONENT
+Name : wsgi
+Project : glance
+Duration : 139ms 61µs
+Trace id : d134f129-4498-4025-9fec-4f7acece296b
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v2/images
+Scheme : http
+Method : POST
+Query : 
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 327µs
+Trace id : 6baf0bc4-f439-4c24-a777-8525920490db
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 784µs
+Trace id : 606cf98f-28aa-4fd7-bf9f-f0285c3578a3
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : INSERT INTO images (created_at, updated_at, deleted_at, deleted, id, name, disk_format, container_format, size, virtual_size, status, visibility, checksum, min_disk, min_ram, owner, protected) VALUES (%(created_at)s, %(updated_at)s, %(deleted_at)s, %(deleted)s, %(id)s, %(name)s, %(disk_format)s, %(container_format)s, %(size)s, %(virtual_size)s, %(status)s, %(visibility)s, %(checksum)s, %(min_disk)s, %(min_ram)s, %(owner)s, %(protected)s)
+{deleted, checksum, name, status, disk_format, updated_at, protected, min_ram, container_format, created_at, deleted_at, size, owner, virtual_size, visibility, id, min_disk, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 931µs
+Trace id : 51589249-c788-4b0d-9c6d-1521103ca2aa
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT image_properties.created_at AS image_properties_created_at, image_properties.updated_at AS image_properties_updated_at, image_properties.deleted_at AS image_properties_deleted_at, image_properties.deleted AS image_properties_deleted, image_properties.id AS image_properties_id, image_properties.image_id AS image_properties_image_id, image_properties.name AS image_properties_name, image_properties.value AS image_properties_value 
+FROM image_properties 
+WHERE %(param_1)s = image_properties.image_id
+{param_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 543µs
+Trace id : eb7f9d5f-b22a-4f1b-b680-1e12f32dc1ca
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 32ms 252µs
+Trace id : f376e2f2-69a6-493d-b0fa-b5f191f06c9c
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 552µs
+Trace id : d890f8c8-d6a8-4004-a3ad-74c0d562d8d5
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 862µs
+Trace id : 3382fdc9-6343-4445-872c-8cb5dbbe7a0c
+Parent id : d134f129-4498-4025-9fec-4f7acece296b
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT image_tags.value AS image_tags_value 
+FROM image_tags 
+WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false
+{image_id_1, }
+
+
+HTTP_COMPONENT
+Name : wsgi
+Project : glance
+Duration : 66ms 297µs
+Trace id : 8a13f1d5-3b4a-4b0b-90f2-35960f615b5e
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v2/images/e056c32a-6171-4167-8826-0001320665b5
+Scheme : http
+Method : GET
+Query : 
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 28ms 511µs
+Trace id : e37720b9-2f96-4565-969e-9ca6b8310e7c
+Parent id : 8a13f1d5-3b4a-4b0b-90f2-35960f615b5e
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 4ms 195µs
+Trace id : 8509240c-0ac2-404d-9ce1-a8cd6917b8c1
+Parent id : 8a13f1d5-3b4a-4b0b-90f2-35960f615b5e
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 465µs
+Trace id : 633b9cd9-aaad-4c7c-963f-65bd80c983df
+Parent id : 8a13f1d5-3b4a-4b0b-90f2-35960f615b5e
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 550µs
+Trace id : 0d62268f-fdd2-47ec-bd03-3ece7d7a8bf7
+Parent id : 8a13f1d5-3b4a-4b0b-90f2-35960f615b5e
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT image_tags.value AS image_tags_value 
+FROM image_tags 
+WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false
+{image_id_1, }
+
+
+HTTP_COMPONENT
+Name : wsgi
+Project : glance
+Duration : 5ms 778µs
+Trace id : f6d4e96a-1ae6-43f6-a660-e8dc1b51cb84
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v2/schemas/image
+Scheme : http
+Method : GET
+Query : 
+
+HTTP_COMPONENT
+Name : wsgi
+Project : glance
+Duration : 4m 52s 665ms 111µs
+Trace id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+Parent id : 82fb63df-3ba0-4c53-b6fb-3b0f13f944c1
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Path : /v2/images/e056c32a-6171-4167-8826-0001320665b5/file
+Scheme : http
+Method : PUT
+Query : 
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 832µs
+Trace id : 2d602164-65b4-4ae7-b27c-609554f52f40
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 4ms 926µs
+Trace id : e116f205-754b-4024-8984-fb8f2b0e2558
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 431µs
+Trace id : a21ee3c5-18f0-4bab-a3b9-fc75e9e07220
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 687µs
+Trace id : 1bf455e5-f39e-44c8-a36c-2a56e03b0414
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT image_tags.value AS image_tags_value 
+FROM image_tags 
+WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false
+{image_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 435µs
+Trace id : edc6c4dc-26f9-4283-b3ee-c02e619540dd
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 3ms 584µs
+Trace id : c10b4ed6-2fe4-4775-bd47-6db38637c051
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 583µs
+Trace id : 3b7eb69f-57a0-4f90-8222-93d9127f1ba2
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.id AS images_id 
+FROM images 
+WHERE images.id = %(id_1)s AND images.status = %(status_1)s
+{id_1, status_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 898µs
+Trace id : e088800d-2fb9-42ac-8bdc-59dcd452537d
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s AND images.status = %(status_1)s
+{id_1, container_format, name, status, disk_format, virtual_size, updated_at, protected, min_ram, size, owner, status_1, checksum, visibility, id, min_disk, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 3ms 501µs
+Trace id : 4e00a17e-2214-4605-9163-70304d606d35
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 257µs
+Trace id : 553ccbac-e8c5-49f0-9c9b-b40b89fd4f3e
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 3ms 264µs
+Trace id : 80ddcf79-2ff8-482d-b5da-873425a6ffd2
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 35ms 470µs
+Trace id : 7b0f18b9-4c9b-401d-8312-84074239751e
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 822µs
+Trace id : fad7276c-0548-46ac-a232-9e8d16f7a5da
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT image_tags.value AS image_tags_value 
+FROM image_tags 
+WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false
+{image_id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 2ms 260µs
+Trace id : df4716da-04a0-4323-9c50-7103b14e8a90
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 4ms 868µs
+Trace id : d6f37de5-63d0-434e-bda1-b4d8fe6c4f0e
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 2ms 55µs
+Trace id : 8dad5f78-ac68-4005-9a65-56d6f87d480f
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.id AS images_id 
+FROM images 
+WHERE images.id = %(id_1)s
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 2ms 199µs
+Trace id : 7b49c6f6-3e60-4b80-bdcb-8e76a2fd26d7
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : UPDATE images SET updated_at=%(updated_at)s, id=%(id)s, name=%(name)s, disk_format=%(disk_format)s, container_format=%(container_format)s, size=%(size)s, virtual_size=%(virtual_size)s, status=%(status)s, visibility=%(visibility)s, checksum=%(checksum)s, min_disk=%(min_disk)s, min_ram=%(min_ram)s, owner=%(owner)s, protected=%(protected)s WHERE images.id = %(id_1)s
+{id_1, checksum, name, status, disk_format, virtual_size, protected, container_format, min_ram, size, owner, updated_at, visibility, id, min_disk, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 4ms 59µs
+Trace id : 20d0ef81-150f-45ea-a246-d067781a9783
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 10ms 955µs
+Trace id : 4ec8dde5-5c3b-4cc8-8aa8-71ddf48d5e99
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 4ms 0µs
+Trace id : ed227015-106b-4173-94c7-3352a81bdf35
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 2
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT images.created_at AS images_created_at, images.updated_at AS images_updated_at, images.deleted_at AS images_deleted_at, images.deleted AS images_deleted, images.id AS images_id, images.name AS images_name, images.disk_format AS images_disk_format, images.container_format AS images_container_format, images.size AS images_size, images.virtual_size AS images_virtual_size, images.status AS images_status, images.visibility AS images_visibility, images.checksum AS images_checksum, images.min_disk AS images_min_disk, images.min_ram AS images_min_ram, images.owner AS images_owner, images.protected AS images_protected, image_properties_1.created_at AS image_properties_1_created_at, image_properties_1.updated_at AS image_properties_1_updated_at, image_properties_1.deleted_at AS image_properties_1_deleted_at, image_properties_1.deleted AS image_properties_1_deleted, image_properties_1.id AS image_properties_1_id, image_properties_1.image_id AS image_properties_1_image_id, image_properties_1.name AS image_properties_1_name, image_properties_1.value AS image_properties_1_value, image_locations_1.created_at AS image_locations_1_created_at, image_locations_1.updated_at AS image_locations_1_updated_at, image_locations_1.deleted_at AS image_locations_1_deleted_at, image_locations_1.deleted AS image_locations_1_deleted, image_locations_1.id AS image_locations_1_id, image_locations_1.image_id AS image_locations_1_image_id, image_locations_1.value AS image_locations_1_value, image_locations_1.meta_data AS image_locations_1_meta_data, image_locations_1.status AS image_locations_1_status 
+FROM images LEFT OUTER JOIN image_properties AS image_properties_1 ON images.id = image_properties_1.image_id LEFT OUTER JOIN image_locations AS image_locations_1 ON images.id = image_locations_1.image_id 
+WHERE images.id = %(id_1)s AND images.deleted = false
+{id_1, }
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 463µs
+Trace id : 7dfd2598-39c4-4117-a241-5c739afeb222
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT 1
+{}
+
+DB_COMPONENT
+Name : db
+Project : glance
+Duration : 1ms 643µs
+Trace id : ce2f0cc1-52ce-47fc-8835-43f1e64ad436
+Parent id : 597da258-ed65-4d21-92b0-9b502fa45cb5
+DB_Stats
+Nb join : 0
+Nb transactions : 0
+Host : parasilo-26-kavlan-5.rennes.grid5000.fr
+Statement : SELECT image_tags.value AS image_tags_value 
+FROM image_tags 
+WHERE image_tags.image_id = %(image_id_1)s AND image_tags.deleted = false
+{image_id_1, }
+
+
+---------------------------
+---------------------------
+---------------------------
