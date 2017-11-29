@@ -9,17 +9,23 @@ There are four categories of information extracted from the JSON traces.
 3. Database component : this object contains information about the database requests. It is the most important element, as it lists which database was used, the duration of the request and information about the request itself.
 4. Function component : this object contains information about the remaining elements, essentially about execution consistency.
 
+## Dependencies
+Before running the programm, you must install the dependencies specified in the [requirement](requirements.txt) file with the command :
+```
+pip install -r requirements.txt
+```
+
 ## Run
 Requires Python 3.0 or higher to run. Any lower version may work, but the consistency is not assured.
 
-To run the program, make sure the directory "files" contains execution traces. You may use the following command line :
+To run the program, make sure the directory [files](files) contains execution traces. You may use the following command line :
 ```
-python main.py > execution_trace.log
+python main.py
 ```
 
 ## Output
 The programm generates several things in the *output* directory :
-  - logs :  textual information about what has been parsed in each trace under the *files* directory
+  - logs :  textual information about what has been parsed in each trace under the [files](files) directory
   - report : global html report for each trace parsed
   - report/graphs : individual graphs generated which are combined to generate the full report
 
