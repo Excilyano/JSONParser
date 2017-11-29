@@ -30,6 +30,7 @@ class ReportGenerator(object):
         
         return '''
         <h2> Global info by requests</h2>
+        <h4> Proportion of requests executed by each component used in the requested action on OpenStack.</h4>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
         src="''' + graph_path + '''"></iframe>'''
 
@@ -48,6 +49,7 @@ class ReportGenerator(object):
         
         return '''
         <h2> Global info by time</h2>
+        <h4> Time consumption for each component used in the requested action on OpenStack. </h4>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
         src="''' + graph_path + '''"></iframe>'''        
 
@@ -73,6 +75,7 @@ class ReportGenerator(object):
 
         return '''
         <h2> Global SQL info </h2>
+        <h4> Number of JOIN, SELECT 1 and transactions found in the executed requests from the action performed on OpenStack. </h4>
         <iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
         src="''' + graph_path + '''"></iframe>'''
 
@@ -147,6 +150,7 @@ class ReportGenerator(object):
             </head>
             <body>
                 <h1>Index of reports for Openstack </h1></br></br>
+                <h4> These documents reports some metrics about SQL requests played during the execution of any action done on OpenStack. </h4>
                 <ul>
                     ''' + html_list + '''
                 </ul>
@@ -184,6 +188,8 @@ class ReportGenerator(object):
                 ''' + global_byrequest_html + '''
                 ''' + global_bytime_html + '''
                 ''' + globalsql_html + '''
+                </br></br>
+                <h2> Tree view of the request calls </h2>
                 </br></br>
                 <div class="row>
                     <div class="col-lg-6">
