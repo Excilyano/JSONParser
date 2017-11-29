@@ -14,6 +14,9 @@ class HTTPComponent(Component):
         self.method = method
         self.query = query
 
+    def get_statement(self):
+        return self.method + ' => ' + self.path
+
     def __str__(self):
         result = "HTTP_COMPONENT" + "\n"
 

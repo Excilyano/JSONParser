@@ -11,6 +11,9 @@ class FunctionComponent(Component):
                                                 parent_id, trace_id)
         self.function_call = function_call
 
+    def get_statement(self):
+        self.function_call
+
     def __str__(self):
         result = 'FUNCTION_COMPONENT\n'
 

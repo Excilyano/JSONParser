@@ -125,7 +125,20 @@ class JsonParser(object):
         start_timestamp = datetime.strptime(start, date_format)
         end_timestamp = datetime.strptime(end, date_format)
 
-        return str(end_timestamp - start_timestamp)
+        timestamp_difference = end_timestamp - start_timestamp
+
+        hours = timestamp_difference.seconds // 3600
+        minutes = (timestamp_difference.seconds % 3600) // 60
+        seconds = timestamp_difference.seconds % 60
+        milliseconds = timestamp_difference.microseconds // 1000
+        microseconds = timestamp_difference.microseconds % 1000
+
+        result = ""
+
+        result += str(minutes) + 'm ' if minutes > 0 else ""
+        result += str(seconds) + 's ' if seconds > 0 else ""
+
+        return result + str(milliseconds) + 'ms ' + str(microseconds) + 'µs'
 
     def extract_component_from_meta(self, string):
         result = ''

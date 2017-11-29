@@ -15,7 +15,7 @@ class ReportGenerator(object):
         self.general_info = general_info
 
 
-    def generate_global_graph(self):
+    def generate_global_graph_byrequest(self):
         labels = []
         values = []
 
@@ -26,12 +26,30 @@ class ReportGenerator(object):
         trace = graph_objs.Pie(labels=labels, values=values)
 
         graph_path = py.offline.plot([trace],
-                         filename=self.graph_directory + 'global_' + self.general_info.file_name + '.html', auto_open=False)
+                         filename=self.graph_directory + 'global_by_request_' + self.general_info.file_name + '.html', auto_open=False)
         
         return '''
-        <h2> Global info </h2>
+        <h2> Global info by requests</h2>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
         src="''' + graph_path + '''"></iframe>'''
+
+    def generate_global_graph_bytime(self):
+        labels = []
+        values = []
+
+        for (key, item) in self.general_info.stats.items():
+            labels.append(item.name)
+            values.append(item.duration)
+
+        trace = graph_objs.Pie(labels=labels, values=values)
+
+        graph_path = py.offline.plot([trace],
+                         filename=self.graph_directory + 'global_by_time_' + self.general_info.file_name + '.html', auto_open=False)
+        
+        return '''
+        <h2> Global info by time</h2>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
+        src="''' + graph_path + '''"></iframe>'''        
 
     def generate_global_sql_graph(self):
         labels = []
@@ -70,7 +88,7 @@ class ReportGenerator(object):
                 state: {
                     expanded:false
                 },
-                text: "[''' + item.project + '''] - ",
+                text: `[''' + item.project + '''] - ''' + item.duration + ''' - ''' + item.get_statement() + '''`,
             '''
             if(len(item.children) != 0):
                 html_string += 'nodes: ['
@@ -83,6 +101,7 @@ class ReportGenerator(object):
         html_string += '''
         ]
         $('#tree').treeview({data: data});
+
         </script>
         '''
 
@@ -94,7 +113,7 @@ class ReportGenerator(object):
             state: {
                 expanded: false
             },
-            text: "[''' + item.project + '''] - ",
+            text: `[''' + item.project + '''] - ''' + item.duration + ''' - ''' + item.get_statement() + '''`,
         '''
 
         if(len(item.children) != 0):
@@ -109,14 +128,17 @@ class ReportGenerator(object):
 
 
     def generate_report(self):
-        global_html = self.generate_global_graph()
+        global_byrequest_html = self.generate_global_graph_byrequest()
+
+        global_bytime_html = self.generate_global_graph_bytime()
 
         globalsql_html = self.generate_global_sql_graph()
 
         tree_html = self.generate_tree()
 
         html_string = '''
-        <html>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+        <html> 
             <head>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
@@ -126,14 +148,45 @@ class ReportGenerator(object):
                 <h1>SQL Report for Openstack</h1>
                 <h2> File : ''' + self.general_info.file_name + '''</h2>
 
-                ''' + global_html + '''
+                ''' + global_byrequest_html + '''
+                ''' + global_bytime_html + '''
                 ''' + globalsql_html + '''
+                </br></br>
+                <div class="row>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                        <input type="text" id="input-search" class="form-control" placeholder="Filter results" onkeydown="filterInput(event)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" id="filter-button" type="button" onclick="filter()">Filter</button>
+                        </span>
+                        </div>
+                    </div>
+                </div></br>
                 <div id="tree"></div>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
             ''' + tree_html + '''
+
+            <script>
+
+            function filter(){
+                $('#tree').treeview('collapseAll', { silent: true });
+                $('#tree').treeview('search', [document.getElementById('input-search').value, {
+                    ignoreCase: true,
+                    exactMatch: false,
+                    revealResults: true
+                }]);
+            }  
+
+            function filterInput(e){
+                if(e.keyCode == 13){
+                    filter();
+                }
+            }     
+
+            </script>
             </body>
         </html>'''
 

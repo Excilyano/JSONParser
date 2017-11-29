@@ -13,6 +13,9 @@ class DBComponent(Component):
         self.statement = statement
         self.sql_stats = sql_stats
 
+    def get_statement(self):
+        return self.statement.replace('`', '\`')
+
     def __str__(self):
         result = "DB_COMPONENT\n"
 
