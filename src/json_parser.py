@@ -13,7 +13,6 @@ from dto.stats import Stats
 
 from report.report_generator import ReportGenerator
 
-from SQLParser.SqlReport import SqlReport
 from SQLParser.SqlReportProcessor import SqlReportProcessor
 
 import time
@@ -67,8 +66,6 @@ class JsonParser(object):
 
         self.graph_generation_duration = time.time() - time_start
 
-
-
     def extract_generalinfo(self, file, json):
         general_info = GeneralInfo(file_name=file)
 
@@ -89,7 +86,6 @@ class JsonParser(object):
         self.object_data[file] = general_info
         
         self.generate_log(file, general_info)
-
 
     def explore_child(self, child, parent):
         info = child["info"]

@@ -6,6 +6,7 @@ import plotly.graph_objs as graph_objs
 
 from utils import Utils
 
+
 class ReportGenerator(object):
 
     dir_path = path.dirname(path.realpath(__file__))
@@ -26,13 +27,17 @@ class ReportGenerator(object):
         trace = graph_objs.Pie(labels=labels, values=values)
 
         graph_path = py.offline.plot([trace],
-                         filename=self.graph_directory + 'global_by_request_' + self.general_info.file_name + '.html', auto_open=False)
-        
+                                     filename=self.graph_directory +
+                                     'global_by_request_' +
+                                     self.general_info.file_name + '.html',
+                                     auto_open=False)
+
         return '''
         <h2> Global info by requests</h2>
-        <h4> Proportion of requests executed by each component used in the requested action on OpenStack.</h4>
-        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-        src="''' + graph_path + '''"></iframe>'''
+        <h4> Proportion of requests executed by each component used \
+        in the requested action on OpenStack.</h4>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless"\
+        scrolling="no" src="''' + graph_path + '''"></iframe>'''
 
     def generate_global_graph_bytime(self):
         labels = []
@@ -45,17 +50,19 @@ class ReportGenerator(object):
         trace = graph_objs.Pie(labels=labels, values=values)
 
         graph_path = py.offline.plot([trace],
-                         filename=self.graph_directory + 'global_by_time_' + self.general_info.file_name + '.html', auto_open=False)
-        
+                                     filename=self.graph_directory +
+                                     'global_by_time_' +
+                                     self.general_info.file_name + '.html',
+                                     auto_open=False)
+
         return '''
         <h2> Global info by time</h2>
-        <h4> Time consumption for each component used in the requested action on OpenStack. </h4>
-        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-        src="''' + graph_path + '''"></iframe>'''        
+        <h4> Time consumption for each component used \
+        in the requested action on OpenStack. </h4>
+        <iframe width="1000" height="550" frameborder="0" seamless="seamless" \
+        scrolling="no" src="''' + graph_path + '''"></iframe>'''
 
     def generate_global_sql_graph(self):
-        labels = []
-        values = []
         nb_db_requests = 0
 
         stats = self.general_info.stats
@@ -66,18 +73,23 @@ class ReportGenerator(object):
 
         trace = graph_objs.Bar(
             x=['Total DB requests', 'Select 1', 'Joins', 'Transactions'],
-            y=[nb_db_requests,self.general_info.total_select1,
-                 self.general_info.total_joins, self.general_info.total_transactions]
+            y=[nb_db_requests, self.general_info.total_select1,
+               self.general_info.total_joins,
+               self.general_info.total_transactions]
         )
 
         graph_path = py.offline.plot([trace],
-                    filename=self.graph_directory + 'global_sql_' + self.general_info.file_name + '.html', auto_open=False)
+                                     filename=self.graph_directory +
+                                     'global_sql_' +
+                                     self.general_info.file_name + '.html',
+                                     auto_open=False)
 
         return '''
         <h2> Global SQL info </h2>
-        <h4> Number of JOIN, SELECT 1 and transactions found in the executed requests from the action performed on OpenStack. </h4>
-        <iframe width="1200" height="550" frameborder="0" seamless="seamless" scrolling="no" \
-        src="''' + graph_path + '''"></iframe>'''
+        <h4> Number of JOIN, SELECT 1 and transactions found in \
+        the executed requests from the action performed on OpenStack. </h4>
+        <iframe width="1200" height="550" frameborder="0" seamless="seamless" \
+        scrolling="no" src="''' + graph_path + '''"></iframe>'''
 
     def generate_tree(self):
         html_string = '''
@@ -98,7 +110,7 @@ class ReportGenerator(object):
                 for child in item.children:
                     html_string += self.generate_children_tree(child)
                 html_string += ']'
-                
+
             html_string += '},'
 
         html_string += '''
@@ -124,7 +136,7 @@ class ReportGenerator(object):
             for child in item.children:
                 html_string += self.generate_children_tree(child)
             html_string += ']'
-            
+
         html_string += '},'
 
         return html_string
@@ -146,7 +158,7 @@ class ReportGenerator(object):
 
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
-                <style>body{ margin:0 100; background:whitesmoke; }</style>            
+                <style>body{ margin:0 100; background:whitesmoke; }</style>  
             </head>
             <body>
                 <h1>Index of reports for Openstack </h1></br>
@@ -159,10 +171,9 @@ class ReportGenerator(object):
         </html>
         '''
 
-        with open(self.report_directory + 'index_report.html','w') as f:
+        with open(self.report_directory + 'index_report.html', 'w') as f:
             f.write(html_string)
             f.close()
-
 
     def generate_report(self):
         global_byrequest_html = self.generate_global_graph_byrequest()
@@ -173,8 +184,8 @@ class ReportGenerator(object):
 
         tree_html = self.generate_tree()
 
-        html_string = ''' 
-        <html> 
+        html_string = '''
+        <html>
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -221,18 +232,18 @@ class ReportGenerator(object):
                     exactMatch: false,
                     revealResults: true
                 }]);
-            }  
+            }
 
             function filterInput(e){
                 if(e.keyCode == 13){
                     filter();
                 }
-            }     
+            }
 
             </script>
             </body>
         </html>'''
 
-        with open(self.report_directory + 'report_' + self.general_info.file_name + '.html','w') as f:
+        with open(self.report_directory + 'report_' + self.general_info.file_name + '.html', 'w') as f:
             f.write(html_string)
             f.close()
