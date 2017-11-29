@@ -29,6 +29,8 @@ The programm generates several things in the *output* directory :
   - report : global html report for each trace parsed
   - report/graphs : individual graphs generated which are combined to generate the full report
 
+Please take a look at our [outputs](output/report/index_report.html) to have a hint of the result !
+
 ## Created by
 * CASSIN Etienne
 * DAVAZE Romain
