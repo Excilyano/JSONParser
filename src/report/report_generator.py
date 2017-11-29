@@ -149,8 +149,9 @@ class ReportGenerator(object):
                 <style>body{ margin:0 100; background:whitesmoke; }</style>            
             </head>
             <body>
-                <h1>Index of reports for Openstack </h1></br></br>
+                <h1>Index of reports for Openstack </h1></br>
                 <h4> These documents reports some metrics about SQL requests played during the execution of any action done on OpenStack. </h4>
+                </br></br>
                 <ul>
                     ''' + html_list + '''
                 </ul>
@@ -182,15 +183,18 @@ class ReportGenerator(object):
                 <style>body{ margin:0 100; background:whitesmoke; }</style>
             </head>
             <body>
-                <h1>SQL Report for Openstack</h1>
-                <h2> File : ''' + self.general_info.file_name + '''</h2>
-
+                <h1>SQL Report for Openstack</h1></br>
+                <h4> File : ''' + self.general_info.file_name + '''</h4>
+                </br></br>
                 ''' + global_byrequest_html + '''
+                </br></br>
                 ''' + global_bytime_html + '''
+                </br></br>
                 ''' + globalsql_html + '''
                 </br></br>
                 <h2> Tree view of the request calls </h2>
-                </br></br>
+                <h4>This view shows the hierarchy between all the request that have been made throughout this trace</h4>
+                </br>
                 <div class="row>
                     <div class="col-lg-6">
                         <div class="input-group">
