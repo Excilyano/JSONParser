@@ -24,4 +24,3 @@ class Component(object):
         result += "Parent id : " + self.parent_id + "\n"
 
         return result
-

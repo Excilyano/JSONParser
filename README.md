@@ -1,3 +1,6 @@
+Please look at the README [there](https://excilyano.github.io/JSONParser/) !
+Take a look at our [outputs](output/report/index_report.html) to have a hint of the result !
+
 # JSONParser
 JSONParser is a module meant to parse the JSON traces created by the execution of OpenStack's components.
 The implementation currently creates a tree tracing the execution order of the stack.

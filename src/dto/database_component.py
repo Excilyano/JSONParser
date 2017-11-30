@@ -1,11 +1,11 @@
 from dto.component import Component
-from SQLParser.SqlReport import SqlReport
+
 
 class DBComponent(Component):
     types = ['db', 'neutron.db']
 
     def __init__(self, module, project, duration, parent_id, trace_id,
-                sql_stats, host, params, statement):
+                 sql_stats, host, params, statement):
         super(DBComponent, self).__init__(module, project, duration,
                                           parent_id, trace_id)
         self.host = host
