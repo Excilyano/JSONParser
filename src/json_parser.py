@@ -1,5 +1,5 @@
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from os import path
 from re import search
 from utils import Utils
@@ -30,6 +30,9 @@ class JsonParser(object):
     nb_joins = 0
     nb_transactions = 0
     nb_select1 = 0
+    duration_joins = timedelta()
+    duration_transactions = timedelta()
+    duration_select1 = timedelta()
     sql_parsing_duration = 0
     json_parsing_duration = 0
     graph_generation_duration = 0
@@ -54,6 +57,9 @@ class JsonParser(object):
             self.nb_joins = 0
             self.nb_transactions = 0
             self.nb_select1 = 0
+            self.duration_joins = timedelta()
+            self.duration_transactions = timedelta()
+            self.duration_select1 = timedelta()
 
         self.json_parsing_duration = time.time() - time_start - self.sql_parsing_duration
 
@@ -82,9 +88,12 @@ class JsonParser(object):
         for data in json["children"]:
             self.explore_child(data, general_info)
 
-        general_info.total_joins = self.nb_joins
-        general_info.total_transactions = self.nb_transactions
-        general_info.total_select1 = self.nb_select1
+        general_info.total_nb_joins = self.nb_joins
+        general_info.total_nb_transactions = self.nb_transactions
+        general_info.total_nb_select1 = self.nb_select1
+        general_info.total_duration_joins = self.duration_joins
+        general_info.total_duration_transactions = self.duration_transactions
+        general_info.total_duration_select1 = self.duration_select1
 
         self.object_data[file] = general_info
         
@@ -104,7 +113,9 @@ class JsonParser(object):
         if module:
             start = info["meta.raw_payload."+module+"-start"]["timestamp"]
             end = info["meta.raw_payload."+module+"-stop"]["timestamp"]
-            duration = self.parse_timestamp(start, end)
+
+            duration = self.util.convert_string_to_datetime(end) - \
+                       self.util.convert_string_to_datetime(start)
 
             trace_id = child["trace_id"]
             parent_id = child["parent_id"]
@@ -138,26 +149,6 @@ class JsonParser(object):
         for sub_child in child["children"]:
             self.explore_child(sub_child, component)
 
-    def parse_timestamp(self, start, end):
-        date_format = "%Y-%m-%dT%H:%M:%S.%f"
-        start_timestamp = datetime.strptime(start, date_format)
-        end_timestamp = datetime.strptime(end, date_format)
-
-        timestamp_difference = end_timestamp - start_timestamp
-
-        hours = timestamp_difference.seconds // 3600
-        minutes = (timestamp_difference.seconds % 3600) // 60
-        seconds = timestamp_difference.seconds % 60
-        milliseconds = timestamp_difference.microseconds // 1000
-        microseconds = timestamp_difference.microseconds % 1000
-
-        result = ""
-
-        result += str(minutes) + 'm ' if minutes > 0 else ""
-        result += str(seconds) + 's ' if seconds > 0 else ""
-
-        return result + str(milliseconds) + 'ms ' + str(microseconds) + 'µs'
-
     def extract_component_from_meta(self, string):
         result = ''
         found = search("meta.raw_payload.(.+?)-start", string)
@@ -176,11 +167,19 @@ class JsonParser(object):
         sql_stats = self.sqlreportprocessor.report(statement)
         self.sql_parsing_duration += time.time() - time_start
 
+        date_format = "%Mm%Ss.%f"
+
         if(statement.upper() == "SELECT 1"):
             self.nb_select1 += 1
+            self.duration_select1 += general.duration
+        else:
+            if(sql_stats.nb_join > 0):
+                self.nb_joins += 1
+                self.duration_joins += general.duration
 
-        self.nb_joins += 1 if sql_stats.nb_join > 0 else 0
-        self.nb_transactions += 1 if sql_stats.nb_transac > 0 else 0
+            if(sql_stats.nb_transac > 0):
+                self.nb_transactions += 1
+                self.duration_transactions += general.duration
 
         db_component = DBComponent(
             module=general.module,

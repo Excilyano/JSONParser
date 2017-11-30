@@ -1,3 +1,4 @@
+from utils import Utils
 
 class Component(object):
 
@@ -9,6 +10,8 @@ class Component(object):
         self.trace_id = trace_id
         self.parent_id = parent_id
 
+        self.util = Utils()
+
     def add_child(self, child):
         self.children.append(child)
 
@@ -19,7 +22,7 @@ class Component(object):
         result = ""
         result += "Name : " + self.module + "\n"
         result += "Project : " + self.project + "\n"
-        result += "Duration : " + self.duration + "\n"
+        result += "Duration : " + self.util.convert_datetime_to_string(self.duration) + "\n"
         result += "Trace id : " + self.trace_id + "\n"
         result += "Parent id : " + self.parent_id + "\n"
 

@@ -39,7 +39,7 @@ class ReportGenerator(object):
         <iframe width="1000" height="550" frameborder="0" seamless="seamless"\
         scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
 
-    def generate_global_graph_bytime(self):
+    def generate_global_graph_byduration(self):
         labels = []
         values = []
 
@@ -51,45 +51,84 @@ class ReportGenerator(object):
 
         graph_path = py.offline.plot([trace],
                                      filename=self.graph_directory +
-                                     'global_by_time_' +
+                                     'global_by_duration_' +
                                      self.general_info.file_name + '.html',
                                      auto_open=False)
 
         return '''
-        <h2> Global info by time</h2>
+        <h2> Global info by duration</h2>
         <h4> Time consumption for each component used \
         in the requested action on OpenStack. </h4>
         <iframe width="1000" height="550" frameborder="0" seamless="seamless" \
         scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
 
-    def generate_global_sql_graph(self):
-        nb_db_requests = 0
+    def generate_global_sql_graph_byrequest(self):
+        nb_dbrequests = 0
 
         stats = self.general_info.stats
         if('db' in stats.keys()):
-            nb_db_requests += stats['db'].count
+            nb_dbrequests += stats['db'].count
         if('neutron.db' in stats.keys()):
-            nb_db_requests += stats['neutron.db'].count
+            nb_dbrequests += stats['neutron.db'].count
 
         trace = graph_objs.Bar(
             x=['Total DB requests', 'Select 1', 'Joins', 'Transactions'],
-            y=[nb_db_requests, self.general_info.total_select1,
-               self.general_info.total_joins,
-               self.general_info.total_transactions]
+            y=[nb_dbrequests, self.general_info.total_nb_select1,
+               self.general_info.total_nb_joins,
+               self.general_info.total_nb_transactions]
         )
 
         graph_path = py.offline.plot([trace],
                                      filename=self.graph_directory +
-                                     'global_sql_' +
+                                     'global_sql_byrequest_' +
                                      self.general_info.file_name + '.html',
                                      auto_open=False)
 
         return '''
-        <h2> Global SQL info </h2>
+        <h2> Global SQL info by request</h2>
         <h4> Number of JOIN, SELECT 1 and transactions found in \
         the executed requests from the action performed on OpenStack. </h4>
         <iframe width="1200" height="550" frameborder="0" seamless="seamless" \
         scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
+
+    def generate_global_sql_graph_byduration(self):
+
+        duration_db_requests = 0
+
+        ms_select1 = self.general_info.total_duration_select1.total_seconds()*1000 + \
+                      self.general_info.total_duration_select1.microseconds/1000
+
+        ms_joins = self.general_info.total_duration_joins.total_seconds()*1000 + \
+                      self.general_info.total_duration_joins.microseconds/1000
+
+        ms_transactions = self.general_info.total_duration_transactions.total_seconds()*1000 + \
+                      self.general_info.total_duration_transactions.microseconds/1000
+
+        stats = self.general_info.stats
+        if('db' in stats.keys()):
+            duration_db_requests += stats['db'].duration
+        if('neutron.db' in stats.keys()):
+            duration_db_requests += stats['neutron.db'].duration
+
+        trace = graph_objs.Bar(
+            x=['Total DB requests', 'Select 1', 'Joins', 'Transactions'],
+            y=[duration_db_requests, ms_select1, ms_joins, ms_transactions]
+        )
+
+        graph_path = py.offline.plot([trace],
+                                     filename=self.graph_directory +
+                                     'global_sql_byduration' +
+                                     self.general_info.file_name + '.html',
+                                     auto_open=False)
+
+        return '''
+        <h2> Global SQL info by duration</h2>
+        <h4> Time consumption of JOIN, SELECT 1 and transactions found in \
+        the executed requests from the action performed on OpenStack. </h4>
+        <iframe width="1200" height="550" frameborder="0" seamless="seamless" \
+        scrolling="no" src="graphs/''' + path.basename(graph_path) + '''"></iframe>'''
+
+
 
     def generate_tree(self):
         html_string = '''
@@ -103,7 +142,7 @@ class ReportGenerator(object):
                 state: {
                     expanded:false
                 },
-                text: `[''' + item.project + '''] - ''' + item.duration + ''' - ''' + item.get_statement() + '''`,
+                text: `[''' + item.project + '''] - ''' + self.util.convert_datetime_to_string(item.duration) + ''' - ''' + item.get_statement() + '''`,
             '''
             if(len(item.children) != 0):
                 html_string += 'nodes: ['
@@ -128,7 +167,7 @@ class ReportGenerator(object):
             state: {
                 expanded: false
             },
-            text: `[''' + item.project + '''] - ''' + item.duration + ''' - ''' + item.get_statement() + '''`,
+            text: `[''' + item.project + '''] - ''' + self.util.convert_datetime_to_string(item.duration) + ''' - ''' + item.get_statement() + '''`,
         '''
 
         if(len(item.children) != 0):
@@ -178,9 +217,11 @@ class ReportGenerator(object):
     def generate_report(self):
         global_byrequest_html = self.generate_global_graph_byrequest()
 
-        global_bytime_html = self.generate_global_graph_bytime()
+        global_byduration_html = self.generate_global_graph_byduration()
 
-        globalsql_html = self.generate_global_sql_graph()
+        globalsql_byrequest_html = self.generate_global_sql_graph_byrequest()
+
+        globalsql_byduration_html = self.generate_global_sql_graph_byduration()
 
         tree_html = self.generate_tree()
 
@@ -199,10 +240,12 @@ class ReportGenerator(object):
                 </br></br>
                 ''' + global_byrequest_html + '''
                 </br></br>
-                ''' + global_bytime_html + '''
+                ''' + global_byduration_html + '''
                 </br></br>
-                ''' + globalsql_html + '''
+                ''' + globalsql_byrequest_html + '''
                 </br></br>
+                ''' + globalsql_byduration_html + '''
+                </br></br>                
                 <h2> Tree view of the request calls </h2>
                 <h4>This view shows the hierarchy between all the request that have been made throughout this trace</h4>
                 </br>
