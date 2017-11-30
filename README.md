@@ -1,5 +1,6 @@
 Please look at the README [there](https://excilyano.github.io/JSONParser/) !
 Take a look at our [outputs](output/report/index_report.html) to have a hint of the result !
+If you want to see the different elements we went through, please take a look at this [process](FLOW.md) document !
 
 # JSONParser
 JSONParser is a module meant to parse the JSON traces created by the execution of OpenStack's components.
