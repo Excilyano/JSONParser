@@ -10,4 +10,4 @@ After generating a few graphs, we abandonned it because of the illegibility of t
 and requested a huge zoom in to see something. Moreover, the tree wasn't disposed in a helpful way.
 2. Then, we tried Grafana, which is already used to monitor some metrics in OpenStack. But it was too powerfull for what we were trying to do, 
 and we lost some time to try to use it for the metrics form our generated JSON.
-3. Finally, we choose to use Plotly, in order to generate a webpage which contains all our graphs.
+3. Finally, we choose to use Plotly, in order to generate a webpage which contains all our graphs. It simply generates an HTML page from a python source code.
