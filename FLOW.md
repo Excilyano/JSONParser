@@ -1,7 +1,15 @@
 # Process followed during the project
-This document will describe the process we followed and the elements we tested to make the JSON parser and the visual report.
+This document describes the process we followed and the elements we tested to make the JSON parser and the visual report.
 
 ## JSON Parser
+We quickly decided to manually parse the JSON, as existing libraries were not up to our expectation. The parsing now creates a dictionnary based on the given JSON.
+
+## SQL Parser
+Our initial idea was to use a SQLParser generated with Antlr4 in order to get as much information as possible. However, while this solution worked well, the execution was far too long. The SQLParser project still remains in the solution, as it may be necessary in further developments requiring more information.
+
+On second thought, we simplified SQLParser a lot, and reduced it to a word counter on the SQL statements. While it gets less information, it is about 150 times faster than an SQLParser.
+
+It is possible to switch between the two solutions by commenting / decommenting one line in the JSONParser.
 
 ## Visual report
 The goal of this visual report is to show the main metrics of each request to see where can be found huge time consumption.
